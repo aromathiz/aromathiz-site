@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.aromathiz.app",
+      "sha256_cert_fingerprints": [
+        "27:14:C0:02:66:C2:6C:99:7F:C1:A6:19:77:3C:A0:9B:A0:ED:44:4D:33:5B:F8:D2:A8:BF:0C:4B:97:87:8E:EF"
+      ]
+    }
+  }
+]
