@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <meta http-equiv="refresh" content="0; url=/index.html">
-  <title>...</title>
+  <meta charset="UTF-8">
+  <title>aroMathiz - Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Redirection auto après quelques secondes -->
+  <script>
+    // Si jamais l'app ne s'ouvre pas, redirection après 2s
+    setTimeout(() => {
+      window.location.href = "https://www.aromathiz.com/";
+    }, 2000);
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6C63FF, #00C9A7);
+      color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: block;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .playstore {
+      background: #ffffff;
+      color: #000;
+    }
+
+    .web {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+  </style>
 </head>
+
 <body>
-  <p>...</p>
+  <div class="container">
+    <h1>📱 Ouvre le challenge</h1>
+    <p>Ce challenge est disponible dans l'application aroMathiz.</p>
+
+    <a class="btn playstore" href="https://play.google.com/store/apps/details?id=TON.PACKAGE.NAME">
+      Télécharger l'app
+    </a>
+
+    <a class="btn web" href="https://www.aromathiz.com/">
+      Continuer sur le site
+    </a>
+
+    <p style="font-size: 12px; opacity: 0.7;">
+      Redirection automatique en cours...
+    </p>
+  </div>
 </body>
 </html>
