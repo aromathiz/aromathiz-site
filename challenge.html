@@ -1,13 +1,41 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>aroMathiz - Challenge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Redirection auto après quelques secondes -->
   <script>
-    // Si jamais l'app ne s'ouvre pas, redirection après 2s
+    const isFrench = navigator.language && navigator.language.toLowerCase().startsWith("fr");
+
+    const texts = {
+      fr: {
+        title: "📱 Ouvre le challenge",
+        desc: "Ce challenge est disponible dans l'application aroMathiz.",
+        download: "Télécharger l'app",
+        website: "Continuer sur le site",
+        redirecting: "Redirection automatique en cours..."
+      },
+      en: {
+        title: "📱 Open the challenge",
+        desc: "This challenge is available in the aroMathiz app.",
+        download: "Download the app",
+        website: "Continue on website",
+        redirecting: "Redirecting automatically..."
+      }
+    };
+
+    const t = isFrench ? texts.fr : texts.en;
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.documentElement.lang = isFrench ? "fr" : "en";
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("desc").textContent = t.desc;
+      document.getElementById("download").textContent = t.download;
+      document.getElementById("website").textContent = t.website;
+      document.getElementById("redirecting").textContent = t.redirecting;
+    });
+
     setTimeout(() => {
       window.location.href = "https://www.aromathiz.com/";
     }, 2000);
@@ -23,12 +51,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .container {
       max-width: 400px;
-      padding: 20px;
+      width: 100%;
+      padding: 24px;
     }
 
     h1 {
@@ -37,50 +68,68 @@
     }
 
     p {
-      opacity: 0.9;
-      margin-bottom: 30px;
+      opacity: 0.95;
+      margin-bottom: 24px;
+      line-height: 1.5;
     }
 
     .btn {
       display: block;
-      margin: 10px auto;
+      margin: 12px auto;
       padding: 15px;
       border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
       width: 100%;
       max-width: 300px;
+      box-sizing: border-box;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
     }
 
     .playstore {
       background: #ffffff;
-      color: #000;
+      color: #000000;
     }
 
     .web {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.18);
       color: white;
-      border: 1px solid rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    .small {
+      font-size: 12px;
+      opacity: 0.75;
+      margin-top: 20px;
+      margin-bottom: 0;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>📱 Ouvre le challenge</h1>
-    <p>Ce challenge est disponible dans l'application aroMathiz.</p>
+    <h1 id="title">📱 Open the challenge</h1>
+    <p id="desc">This challenge is available in the aroMathiz app.</p>
 
-    <a class="btn playstore" href="https://play.google.com/store/apps/details?id=TON.PACKAGE.NAME">
-      Télécharger l'app
+    <a
+      id="downloadLink"
+      class="btn playstore"
+      href="https://play.google.com/store/apps/details?id=TON.PACKAGE.NAME">
+      <span id="download">Download the app</span>
     </a>
 
-    <a class="btn web" href="https://www.aromathiz.com/">
-      Continuer sur le site
+    <a
+      class="btn web"
+      href="https://www.aromathiz.com/">
+      <span id="website">Continue on website</span>
     </a>
 
-    <p style="font-size: 12px; opacity: 0.7;">
-      Redirection automatique en cours...
-    </p>
+    <p id="redirecting" class="small">Redirecting automatically...</p>
   </div>
 </body>
 </html>
