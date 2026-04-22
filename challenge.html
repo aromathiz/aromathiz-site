@@ -23,9 +23,8 @@
       }
     };
 
-    const t = isFrench ? texts.fr : texts.en;
-
     window.addEventListener("DOMContentLoaded", () => {
+      const t = isFrench ? texts.fr : texts.en;
       document.documentElement.lang = isFrench ? "fr" : "en";
       document.getElementById("title").textContent = t.title;
       document.getElementById("desc").textContent = t.desc;
@@ -46,26 +45,30 @@
       justify-content: center;
       min-height: 100vh;
       padding: 20px;
+      box-sizing: border-box;
     }
 
     .container {
       max-width: 400px;
       width: 100%;
+      padding: 24px;
     }
 
     .logo {
-      width: 90px;
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
       margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 26px;
+      font-size: 28px;
       margin-bottom: 10px;
     }
 
     p {
       opacity: 0.95;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
       line-height: 1.5;
     }
 
@@ -78,11 +81,13 @@
       font-weight: bold;
       width: 100%;
       max-width: 300px;
-      transition: transform 0.15s ease;
+      box-sizing: border-box;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
+      opacity: 0.96;
     }
 
     .playstore {
@@ -91,30 +96,31 @@
     }
 
     .web {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.18);
       color: white;
-      border: 1px solid rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.35);
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-
-    <!-- 🔥 Remplace src par ton vrai logo -->
     <img src="logo.png" alt="aroMathiz logo" class="logo">
 
     <h1 id="title">Open the challenge</h1>
     <p id="desc">This challenge is available in the aroMathiz app.</p>
 
-    <a class="btn playstore" href="https://play.google.com/store/apps/details?id=TON.PACKAGE.NAME">
+    <a
+      class="btn playstore"
+      href="https://play.google.com/store/apps/details?id=TON.PACKAGE.NAME">
       <span id="download">Get it on Google Play</span>
     </a>
 
-    <a class="btn web" href="https://www.aromathiz.com/">
+    <a
+      class="btn web"
+      href="https://www.aromathiz.com/">
       <span id="website">Continue on website</span>
     </a>
-
   </div>
 </body>
 </html>
