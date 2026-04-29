@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
 
   <title>aroMathiz</title>
 
-<meta property="og:title" content="aroMathiz - Taste the Challenge">
-<meta property="og:description" content="Improve your Math skills and challenge your friends.">
-<meta property="og:image" content="https://www.aromathiz.com/img/logo.png">
-<meta property="og:url" content="https://www.aromathiz.com">
-<meta property="og:type" content="website">
+  <meta property="og:title" content="aroMathiz - Taste the Challenge">
+  <meta property="og:description" content="Improve your math skills and challenge your friends.">
+  <meta property="og:image" content="https://www.aromathiz.com/img/logo.png">
+  <meta property="og:url" content="https://www.aromathiz.com">
+  <meta property="og:type" content="website">
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -58,6 +56,7 @@
       text-decoration: none;
       font-weight: 600;
       transition: 0.2s;
+      display: inline-block;
     }
 
     .btn:hover {
@@ -80,6 +79,7 @@
     h1 {
       font-size: 2.5rem;
       font-weight: 600;
+      line-height: 1.2;
     }
 
     p {
@@ -87,11 +87,11 @@
       margin-top: 15px;
     }
 
-    /* CAROUSEL */
     .screenshots {
       position: relative;
       overflow: hidden;
       border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
     }
 
     .screenshots-track {
@@ -103,6 +103,7 @@
       min-width: 100%;
       border-radius: 20px;
       border: 1px solid #eee;
+      display: block;
     }
 
     .carousel-btn {
@@ -150,10 +151,15 @@
       border-radius: 20px;
       background: #fff;
       transition: 0.2s;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
     }
 
     .card:hover {
       transform: translateY(-5px);
+    }
+
+    .card img {
+      margin-bottom: 10px;
     }
 
     .cta {
@@ -185,103 +191,181 @@
 <header>
   <div class="container nav">
     <h2>aroMathiz</h2>
-    <a href="https://play.google.com/store" class="btn">Coming soon</a>
+    <a href="#download" class="btn" data-i18n="nav_download">Coming soon</a>
   </div>
 </header>
 
 <section class="container hero">
   <div>
-    <h1>aroMathiz: Taste the Challenge</h1>
-    <p>
-      Improve your math skills, beat your scores and challenge your friends.
+    <h1 data-i18n="hero_title">aroMathiz: Taste the Challenge</h1>
+
+    <p data-i18n="hero_subtitle">
+      Improve your math skills, beat your scores, and challenge your friends.
     </p>
 
     <div style="margin-top: 25px;">
-      <a href="https://play.google.com/store" class="btn">Download soon on Play Store</a>
+      <a href="#download" class="btn" data-i18n="hero_button">Download soon on Play Store</a>
     </div>
   </div>
 
-  <!-- CAROUSEL -->
   <div class="screenshots">
-    <button class="carousel-btn prev">‹</button>
+    <button class="carousel-btn prev" aria-label="Previous screenshot">‹</button>
 
     <div class="screenshots-track">
-      <img src="img/home_1.png" alt="screen1">
-      <img src="img/challenge_1.png" alt="screen2">
-      <img src="img/sequence_2.png" alt="screen3">
-      <img src="img/sequence_3.png" alt="screen3">
-      <img src="img/duel_1.png" alt="screen3">
-      <img src="img/duel_2.png" alt="screen3">
-      <img src="img/speed_1.png" alt="screen3">
-      <img src="img/avatar_1.png" alt="screen3">
-      <img src="img/score_1.png" alt="screen3">
+      <img src="img/home_1.png" alt="aroMathiz home screen">
+      <img src="img/challenge_1.png" alt="Challenge mode screen">
+      <img src="img/sequence_2.png" alt="Sequence mode screen">
+      <img src="img/sequence_3.png" alt="Sequence score screen">
+      <img src="img/duel_1.png" alt="Duel mode screen">
+      <img src="img/duel_2.png" alt="Duel result screen">
+      <img src="img/speed_1.png" alt="Speed mode screen">
+      <img src="img/avatar_1.png" alt="Avatar customization screen">
+      <img src="img/score_1.png" alt="Score screen">
     </div>
 
-    <button class="carousel-btn next">›</button>
+    <button class="carousel-btn next" aria-label="Next screenshot">›</button>
   </div>
 </section>
 
 <section class="container features">
-  <h2>Features</h2>
+  <h2 data-i18n="features_title">Features</h2>
 
   <div class="features-grid">
 
     <div class="card">
       <img src="img/icon_streak.png" alt="Streak" width="50">
-      <h3>Streak</h3>
-      <p>Answer all questions without making a single mistake.</p>
+      <h3 data-i18n="streak_title">Streak</h3>
+      <p data-i18n="streak_text">Answer all questions without making a single mistake.</p>
     </div>
 
     <div class="card">
       <img src="img/icon_speed.png" alt="Speed" width="50">
-      <h3>Speed</h3>
-      <p>Answer 5 questions as quickly as possible.</p>
+      <h3 data-i18n="speed_title">Speed</h3>
+      <p data-i18n="speed_text">Answer 5 questions as quickly as possible.</p>
     </div>
 
     <div class="card">
       <img src="img/icon_sequence.png" alt="Sequence" width="50">
-      <h3>Sequence</h3>
-      <p>Chain calculations as fast as you can. Challenge your friends and beat their scores. A new daily challenge for each world!</p>
+      <h3 data-i18n="sequence_title">Sequence</h3>
+      <p data-i18n="sequence_text">Chain calculations as fast as you can. Challenge your friends and beat their scores. A new daily challenge for each world!</p>
     </div>
 
     <div class="card">
       <img src="img/icon_challenge.png" alt="Challenge mode" width="50">
-      <h3>Challenge Mode</h3>
-      <p>Answer 5 questions without mistakes as quickly as possible.</p>
+      <h3 data-i18n="challenge_title">Challenge Mode</h3>
+      <p data-i18n="challenge_text">Answer 5 questions without mistakes as quickly as possible.</p>
     </div>
 
     <div class="card">
       <img src="img/icon_duel.png" alt="Duel" width="50">
-      <h3>Duel</h3>
-      <p>Compete with your friends face-to-face.</p>
+      <h3 data-i18n="duel_title">Duel</h3>
+      <p data-i18n="duel_text">Compete with your friends face-to-face.</p>
     </div>
 
     <div class="card">
       <img src="img/icon_boss.png" alt="Boss" width="50">
-      <h3>Boss</h3>
-      <p>Defeat the boss of each world.</p>
+      <h3 data-i18n="boss_title">Boss</h3>
+      <p data-i18n="boss_text">Defeat the boss of each world.</p>
     </div>
 
   </div>
 </section>
 
-<section class="container">
+<section class="container" id="download">
   <div class="cta">
-    <h2>Download soon</h2>
-    <p>on Android</p>
+    <h2 data-i18n="cta_title">Download soon</h2>
+    <p data-i18n="cta_text">on Android</p>
 
     <div style="margin-top:20px;">
-      <a href="https://play.google.com/store" class="btn">Play Store</a>
+      <a href="https://play.google.com/store" class="btn" data-i18n="cta_button">Play Store</a>
     </div>
   </div>
 </section>
 
-<footer>
+<footer data-i18n="footer">
   © 2026 aroMathiz — All rights reserved
 </footer>
 
-<!-- JS CAROUSEL -->
 <script>
+  const translations = {
+    en: {
+      nav_download: "Coming soon",
+      hero_title: "aroMathiz: Taste the Challenge",
+      hero_subtitle: "Improve your math skills, beat your scores, and challenge your friends.",
+      hero_button: "Download soon on Play Store",
+      features_title: "Features",
+
+      streak_title: "Streak",
+      streak_text: "Answer all questions without making a single mistake.",
+
+      speed_title: "Speed",
+      speed_text: "Answer 5 questions as quickly as possible.",
+
+      sequence_title: "Sequence",
+      sequence_text: "Chain calculations as fast as you can. Challenge your friends and beat their scores. A new daily challenge for each world!",
+
+      challenge_title: "Challenge Mode",
+      challenge_text: "Answer 5 questions without mistakes as quickly as possible.",
+
+      duel_title: "Duel",
+      duel_text: "Compete with your friends face-to-face.",
+
+      boss_title: "Boss",
+      boss_text: "Defeat the boss of each world.",
+
+      cta_title: "Download soon",
+      cta_text: "on Android",
+      cta_button: "Play Store",
+
+      footer: "© 2026 aroMathiz — All rights reserved"
+    },
+
+    fr: {
+      nav_download: "Bientôt disponible",
+      hero_title: "aroMathiz : relevez le défi",
+      hero_subtitle: "Progresse en calcul mental, bats tes scores et défie tes amis.",
+      hero_button: "Bientôt disponible sur le Play Store",
+      features_title: "Fonctionnalités",
+
+      streak_title: "Série",
+      streak_text: "Réponds à toutes les questions sans faire une seule erreur.",
+
+      speed_title: "Vitesse",
+      speed_text: "Réponds à 5 questions le plus vite possible.",
+
+      sequence_title: "Séquence",
+      sequence_text: "Enchaîne les calculs aussi vite que possible. Défie tes amis et bats leurs scores. Un nouveau défi quotidien pour chaque monde !",
+
+      challenge_title: "Mode Challenge",
+      challenge_text: "Réponds à 5 questions sans erreur le plus vite possible.",
+
+      duel_title: "Duel",
+      duel_text: "Affronte tes amis en face à face.",
+
+      boss_title: "Boss",
+      boss_text: "Essaie de battre le boss de chaque monde.",
+
+      cta_title: "Bientôt disponible",
+      cta_text: "sur Android",
+      cta_button: "Play Store",
+
+      footer: "© 2026 aroMathiz — Tous droits réservés"
+    }
+  };
+
+  const userLang = navigator.language.startsWith("fr") ? "fr" : "en";
+  const selectedTranslations = translations[userLang];
+
+  document.documentElement.lang = userLang;
+
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.getAttribute("data-i18n");
+
+    if (selectedTranslations[key]) {
+      element.textContent = selectedTranslations[key];
+    }
+  });
+
   const track = document.querySelector('.screenshots-track');
   const slides = document.querySelectorAll('.screenshots img');
   const nextBtn = document.querySelector('.carousel-btn.next');
