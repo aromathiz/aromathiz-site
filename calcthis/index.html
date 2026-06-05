@@ -10,6 +10,8 @@
 
 <meta property="og:title" content="calcThis">
 <meta property="og:description" content="Math without words.">
+<meta property="og:image" content="https://www.aromathiz.com/img/logo.png">
+<meta property="og:url" content="https://www.aromathiz.com/calcthis/">
 <meta property="og:type" content="website">
 
 <style>
@@ -23,59 +25,65 @@
 body{
     background:#0b1020;
     color:white;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
+    min-height:100vh;
 }
 
 .container{
-    max-width:900px;
+    width:100%;
+    max-width:1100px;
     margin:auto;
-    padding:30px 20px 80px;
+    padding:0 20px;
 }
 
-.back{
+header{
+    padding:40px 0;
+}
+
+.back-link{
     color:#94a3b8;
     text-decoration:none;
-    font-size:.95rem;
+    font-size:0.95rem;
 }
 
 .hero{
     text-align:center;
-    padding:70px 0;
+    padding:40px 0 80px;
 }
 
-.logo{
+.app-icon{
     width:120px;
     height:120px;
     border-radius:28px;
     object-fit:cover;
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
 h1{
     margin-top:28px;
-    font-size:3.4rem;
+    font-size:3rem;
     letter-spacing:1px;
 }
 
 .subtitle{
-    margin-top:14px;
+    margin-top:16px;
     color:#94a3b8;
-    font-size:1.1rem;
+    font-size:1.15rem;
 }
 
 .btn{
     display:inline-block;
     margin-top:32px;
 
+    padding:14px 28px;
+
+    border-radius:14px;
+
     background:white;
     color:#0b1020;
 
     text-decoration:none;
     font-weight:700;
-
-    padding:14px 28px;
-
-    border-radius:16px;
 
     transition:.2s;
 }
@@ -84,53 +92,73 @@ h1{
     transform:translateY(-2px);
 }
 
-.gallery{
+.features{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+
     margin-top:40px;
 }
 
-.gallery img{
-    width:100%;
+.card{
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
     border-radius:24px;
 
-    border:1px solid rgba(255,255,255,.08);
+    padding:28px;
+
+    backdrop-filter:blur(10px);
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+.section-title{
+    text-align:center;
+    margin-top:120px;
+    margin-bottom:50px;
+
+    font-size:2rem;
+}
+
+.screenshots-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+}
+
+.screenshots-grid img{
+    width:100%;
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    background:#111827;
 
     transition:.2s;
 }
 
-.gallery img:hover{
+.screenshots-grid img:hover{
     transform:translateY(-4px);
-}
-
-.values{
-    margin-top:80px;
-    text-align:center;
-}
-
-.values p{
-    color:#cbd5e1;
-    font-size:1.05rem;
-    line-height:2;
 }
 
 footer{
     text-align:center;
-    margin-top:100px;
+
+    padding:80px 20px 40px;
+
     color:#64748b;
-}
-
-@media(max-width:700px){
-
-    h1{
-        font-size:2.5rem;
-    }
-
-    .gallery{
-        grid-template-columns:1fr;
-    }
-
 }
 
 </style>
@@ -140,52 +168,81 @@ footer{
 
 <div class="container">
 
-<a class="back" href="/">
-← aroMathiz
-</a>
+<header>
+    <a class="back-link" href="/">
+        ← aroMathiz
+    </a>
+</header>
 
 <section class="hero">
 
-<img
-    class="logo"
-    src="img/logo.png"
-    alt="calcThis"
->
+    <img
+        class="app-icon"
+        src="img/logo.png"
+        alt="calcThis"
+    >
 
-<h1>calcThis</h1>
+    <h1>calcThis</h1>
 
-<div class="subtitle">
-    Math without words.
-</div>
+    <div class="subtitle">
+        Math without words.
+    </div>
 
-<a
-    class="btn"
-    href="https://play.google.com/store/apps/details?id=com.aromathiz.app">
-    Google Play
-</a>
-
-</section>
-
-<section class="gallery">
-
-<img src="img/home_1.png" alt="">
-<img src="img/sequence_2.png" alt="">
-<img src="img/duel_1.png" alt="">
+    <a
+        class="btn"
+        href="https://play.google.com/store/apps/details?id=com.aromathiz.app"
+    >
+        Download on Google Play
+    </a>
 
 </section>
 
-<section class="values">
+<section class="features">
 
-<p>
-Daily challenge.<br>
-Challenge friends.<br>
-Beat your score.
-</p>
+    <div class="card">
+        <h3>Daily Challenge</h3>
+        <p>
+            A new challenge every day.
+            Compare your score with players around the world.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Duel</h3>
+        <p>
+            Challenge your friends and see who calculates faster.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Worlds</h3>
+        <p>
+            Unlock new mathematical worlds and defeat their bosses.
+        </p>
+    </div>
+
+</section>
+
+<h2 class="section-title">
+    Screenshots
+</h2>
+
+<section class="screenshots-grid">
+
+    <img src="img/home_1.png" alt="">
+    <img src="img/challenge_1.png" alt="">
+    <img src="img/sequence_2.png" alt="">
+    <img src="img/sequence_3.png" alt="">
+    <img src="img/duel_1.png" alt="">
+    <img src="img/duel_2.png" alt="">
+    <img src="img/speed_1.png" alt="">
+    <img src="img/avatar_1.png" alt="">
+    <img src="img/score_1.png" alt="">
 
 </section>
 
 <footer>
-© 2026 aroMathiz
+    © 2026 aroMathiz
 </footer>
 
 </div>
