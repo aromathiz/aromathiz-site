@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── SEO ─────────────────────────────────────────────── -->
+  <title>Aromathiz — Minimalist Math Apps for Android</title>
+  <link rel="canonical" href="https://aromathiz.com">
+  <link rel="alternate" hreflang="fr" href="https://aromathiz.com">
+  <link rel="alternate" hreflang="en" href="https://aromathiz.com">
+  <link rel="alternate" hreflang="x-default" href="https://aromathiz.com">
+  <meta name="description" content="Aromathiz makes minimalist Android apps at the intersection of math and creativity — mental math training, formula editor, and daily curve drawing challenges.">
+  <meta name="keywords" content="math app, Android, mental math, formula editor, math game, educational app, calcThis, formulaThis, curveThis">
+  <meta name="author" content="Aromathiz">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b1020">
+
+  <!-- ── Open Graph ──────────────────────────────────────── -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aromathiz.com">
+  <meta property="og:title" content="Aromathiz — Minimalist Math Apps for Android">
+  <meta property="og:description" content="Math training, formula editing, and creative curve drawing. Three apps, one studio.">
+  <meta property="og:image" content="https://aromathiz.com/assets/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- ── Twitter Card ────────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aromathiz — Minimalist Math Apps for Android">
+  <meta name="twitter:description" content="Math training, formula editing, and creative curve drawing. Three apps, one studio.">
+  <meta name="twitter:image" content="https://aromathiz.com/assets/og.png">
+
+  <!-- ── Schema.org ──────────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aromathiz",
+    "url": "https://aromathiz.com",
+    "logo": "https://aromathiz.com/assets/aromathiz.png",
+    "email": "contact@aromathiz.com",
+    "description": "Minimalist educational and creative math apps for Android.",
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MobileApplication",
+          "name": "calcThis",
+          "operatingSystem": "Android",
+          "applicationCategory": "GameApplication",
+          "url": "https://aromathiz.com/calcthis"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MobileApplication",
+          "name": "formulaThis",
+          "operatingSystem": "Android",
+          "applicationCategory": "EducationApplication",
+          "url": "https://aromathiz.com/formulathis"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MobileApplication",
+          "name": "curveThis",
+          "operatingSystem": "Android",
+          "applicationCategory": "GameApplication",
+          "url": "https://aromathiz.com/curvethis"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0b1020;
+      color: white;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      padding: 70px 20px 40px;
+      position: relative;
+    }
+
+    .studio-logo {
+      width: 110px;
+      height: 110px;
+      border-radius: 28px;
+      object-fit: cover;
+      margin-bottom: 26px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      font-size: 1rem;
+    }
+
+    /* ── Sélecteur de langue ── */
+    .lang-switcher {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .lang-btn {
+      font-size: 13px;
+      color: #475569;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .lang-btn:hover { color: #94a3b8; }
+    .lang-btn.active { color: #e2e8f0; border-color: #334155; }
+
+    /* ── Apps grid ── */
+    .apps {
+      width: 100%;
+      max-width: 1150px;
+      margin: auto;
+      padding: 20px 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 26px;
+      padding: 28px;
+      text-decoration: none;
+      color: white;
+      transition: 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .app-icon {
+      width: 84px;
+      height: 84px;
+      border-radius: 22px;
+      object-fit: cover;
+      margin-bottom: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    .app-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      color: #cbd5e1;
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #64748b;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover { color: #94a3b8; }
+
+    /* ── Langue : EN caché par défaut ── */
+    [data-lang="en"] { display: none; }
+
+    body.lang-en [data-lang="en"] { display: block; }
+    body.lang-en [data-lang="fr"] { display: none; }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <!-- Sélecteur de langue -->
+    <nav class="lang-switcher" aria-label="Language">
+      <a href="#" class="lang-btn active" id="btn-fr" onclick="setLang('fr');return false;">FR</a>
+      <a href="#" class="lang-btn" id="btn-en" onclick="setLang('en');return false;">EN</a>
+    </nav>
+
+    <img
+      class="studio-logo"
+      src="/assets/aromathiz.png"
+      alt="Aromathiz"
+      width="110"
+      height="110"
+    >
+
+    <h1>Aromathiz</h1>
+
+    <p class="subtitle" data-lang="fr">Applications éducatives et créatives autour des mathématiques</p>
+    <p class="subtitle" data-lang="en">Minimalist educational and creative math apps for Android</p>
+
+  </header>
+
+  <main>
+    <section class="apps" aria-label="Nos applications">
+
+      <!-- calcThis -->
+      <a class="card" href="/calcthis/">
+        <img
+          class="app-icon"
+          src="/assets/calcthis.png"
+          alt="calcThis — jeu de calcul mental"
+          width="84"
+          height="84"
+          loading="lazy"
+        >
+        <div class="app-title">calcThis</div>
+        <p class="desc" data-lang="fr">Entraînement au calcul mental — défis quotidiens, duels et combats de boss.</p>
+        <p class="desc" data-lang="en">Mental math training — daily challenges, duels and boss battles.</p>
+      </a>
+
+      <!-- formulaThis -->
+      <a class="card" href="/formulathis/">
+        <img
+          class="app-icon"
+          src="/assets/formulathis.png"
+          alt="formulaThis — éditeur de formules LaTeX"
+          width="84"
+          height="84"
+          loading="lazy"
+        >
+        <div class="app-title">formulaThis</div>
+        <p class="desc" data-lang="fr">Éditeur de formules LaTeX — tapez, prévisualisez et exportez en quelques secondes.</p>
+        <p class="desc" data-lang="en">Beautiful LaTeX formula editor — type, preview and export in seconds.</p>
+      </a>
+
+      <!-- curveThis -->
+      <a class="card" href="/curvethis/">
+        <img
+          class="app-icon"
+          src="/assets/curvethis.png"
+          alt="curveThis — défi de dessin avec des courbes mathématiques"
+          width="84"
+          height="84"
+          loading="lazy"
+        >
+        <div class="app-title">curveThis</div>
+        <p class="desc" data-lang="fr">Défi de dessin quotidien — uniquement des lignes, paraboles et cercles.</p>
+        <p class="desc" data-lang="en">Daily word drawing challenge — lines, parabolas and circles only.</p>
+      </a>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Aromathiz &nbsp;·&nbsp;
+      <a href="mailto:contact@aromathiz.com">Contact</a>
+    </p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.classList.toggle('lang-en', lang === 'en');
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang === 'fr' ? 'fr' : 'en';
+      document.title = lang === 'fr'
+        ? 'Aromathiz — Applications de maths pour Android'
+        : 'Aromathiz — Minimalist Math Apps for Android';
+      localStorage.setItem('aromathiz_lang', lang);
+    }
+
+    (function () {
+      const saved = localStorage.getItem('aromathiz_lang');
+      const browser = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+      const lang = saved || (browser.startsWith('fr') ? 'fr' : 'en');
+      setLang(lang);
+    })();
+  </script>
+
+</body>
+</html>
