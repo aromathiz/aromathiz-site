@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>calcThis — Le jeu de calcul mental qui rend accro</title>
+<link rel="icon" type="image/png" href="/calcthis/img/calcthis_favicon.png">
+<link rel="canonical" href="https://aromathiz.com/calcthis">
+<link rel="alternate" hreflang="fr" href="https://aromathiz.com/calcthis">
+<link rel="alternate" hreflang="en" href="https://aromathiz.com/calcthis/en">
+<link rel="alternate" hreflang="x-default" href="https://aromathiz.com/calcthis">
+<meta name="description" content="calcThis est un jeu de calcul mental sur Android : entraîne-toi, relève des défis quotidiens et affronte tes amis. Entiers, fractions, algèbre — gratuit.">
+<meta name="keywords" content="calcul mental, jeu de maths, défi quotidien, duel, fractions, algèbre, Android, entraînement, rapidité">
+<meta name="author" content="Aromathiz">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f0c0c">
+<meta property="og:title" content="calcThis — Le jeu de calcul mental minimal">
+<meta property="og:description" content="Entraîne-toi, relève des défis et affronte tes amis. Le calcul mental n'a jamais été aussi fun.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aromathiz.com/calcthis">
+<meta property="og:image" content="https://aromathiz.com/calcthis/img/og.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="calcThis — Minimal Math Game">
+<meta name="twitter:description" content="Train, challenge friends and beat bosses. The fun side of mental math.">
+<meta name="twitter:image" content="https://aromathiz.com/calcthis/img/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "calcThis",
+  "description": "Master the basics of mental math and prove it. Train, take on challenges, and compete against your friends.",
+  "operatingSystem": "Android",
+  "applicationCategory": "GameApplication",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "author": { "@type": "Organization", "name": "Aromathiz", "email": "contact@aromathiz.com" }
+}
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0f0c0c;
+  color: #e2e8f0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 860px;
+  margin: auto;
+  padding: 40px 20px 80px;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 26px;
+  font-weight: 900;
+  color: white;
+  font-style: italic;
+  letter-spacing: -2px;
+}
+
+.brand {
+  font-size: 20px;
+  font-style: italic;
+  color: #94a3b8;
+}
+
+.brand span { color: #f87171; font-weight: 700; }
+
+.lang-switcher { display: flex; gap: 6px; }
+
+.lang-btn {
+  font-size: 13px;
+  color: #475569;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.lang-btn:hover { color: #94a3b8; }
+.lang-btn.active { color: #f87171; border-color: #2d0a0a; }
+
+/* ── Hero ── */
+.hero { margin-bottom: 64px; }
+
+.hero h1 {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero h1 em { font-style: italic; color: #f87171; }
+
+.hero p {
+  font-size: 17px;
+  color: #94a3b8;
+  max-width: 540px;
+  margin-bottom: 32px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #dc2626;
+  color: white;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.cta:hover { background: #b91c1c; }
+.cta svg { width: 20px; height: 20px; }
+
+/* ── Screenshots ── */
+.screenshots {
+  margin-bottom: 64px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screenshots-track { display: flex; gap: 16px; padding-bottom: 8px; }
+
+.screenshot {
+  flex-shrink: 0;
+  width: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #2d0a0a;
+  background: #1a0a0a;
+}
+
+.screenshot img { width: 100%; height: auto; display: block; }
+
+/* ── Modes de jeu ── */
+.modes { margin-bottom: 64px; }
+
+.modes h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.mode-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mode-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+.mode-emoji {
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+.mode-list li strong { color: #e2e8f0; }
+
+/* ── Audience ── */
+.audience { margin-bottom: 64px; }
+
+.audience h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+.audience p {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 12px;
+  max-width: 640px;
+}
+
+/* ── Premium ── */
+.premium {
+  border: 1px solid #2d0a0a;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 64px;
+}
+
+.premium-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #f87171;
+  margin-bottom: 8px;
+}
+
+.premium h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 8px;
+}
+
+.premium p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.premium-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.premium-features li {
+  font-size: 14px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.premium-features li::before {
+  content: '✓';
+  color: #f87171;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid #2d0a0a;
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer p { font-size: 13px; color: #475569; }
+
+footer a {
+  font-size: 13px;
+  color: #475569;
+  text-decoration: none;
+}
+
+footer a:hover { color: #94a3b8; }
+
+/* ── Langue : EN caché par défaut ── */
+[data-lang="en"] { display: none; }
+
+body.lang-en [data-lang="en"]                  { display: block; }
+body.lang-en .mode-list[data-lang="en"]        { display: flex;  }
+body.lang-en .premium-features[data-lang="en"] { display: flex;  }
+body.lang-en footer[data-lang="en"]            { display: flex;  }
+body.lang-en [data-lang="fr"]                  { display: none;  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">±</div>
+      <div class="brand">calc<span>This</span></div>
+    </div>
+    <nav class="lang-switcher" aria-label="Langue">
+      <a href="#" class="lang-btn active" id="btn-fr" onclick="setLang('fr');return false;">FR</a>
+      <a href="#" class="lang-btn" id="btn-en" onclick="setLang('en');return false;">EN</a>
+    </nav>
+  </header>
+
+  <!-- Hero FR -->
+  <section class="hero" data-lang="fr">
+    <h1>Maîtrise le <em>calcul mental</em><br>et prouve-le.</h1>
+    <p>Entraîne-toi, relève des défis et affronte tes amis. Entiers, décimaux, fractions, algèbre — progressif, ludique, et addictif.</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.aromathiz.calcthis" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
+      </svg>
+      Télécharger sur Google Play
+    </a>
+  </section>
+
+  <!-- Hero EN -->
+  <section class="hero" data-lang="en">
+    <h1>Master <em>mental math</em><br>and prove it.</h1>
+    <p>Train, take on challenges, and compete against your friends. Whole numbers, decimals, fractions, algebra — progressive, playful, and addictive.</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.aromathiz.calcthis" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
+      </svg>
+      Download on Google Play
+    </a>
+  </section>
+
+  <!-- Screenshots (commun) -->
+  <section class="screenshots" aria-label="Screenshots">
+    <div class="screenshots-track">
+      <div class="screenshot"><img src="/calcthis/img/screen1.png" alt="calcThis daily challenge" width="200" fetchpriority="high"></div>
+      <div class="screenshot"><img src="/calcthis/img/screen2.png" alt="calcThis duel mode" width="200" loading="lazy"></div>
+      <div class="screenshot"><img src="/calcthis/img/screen3.png" alt="calcThis boss battle" width="200" loading="lazy"></div>
+      <div class="screenshot"><img src="/calcthis/img/screen4.png" alt="calcThis streak challenge" width="200" loading="lazy"></div>
+      <div class="screenshot"><img src="/calcthis/img/screen5.png" alt="calcThis avatar customization" width="200" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- Modes FR -->
+  <section class="modes" data-lang="fr">
+    <h2>Les modes de jeu</h2>
+    <ul class="mode-list">
+      <li>
+        <div class="mode-emoji">🎯</div>
+        <div><strong>Défi quotidien.</strong> Un défi pour chaque joueur, chaque jour. Seras-tu le calculateur le plus rapide du monde ?</div>
+      </li>
+      <li>
+        <div class="mode-emoji">⚔️</div>
+        <div><strong>Mode Duel.</strong> Affronte un ami sur le même téléphone. Mieux qu'un bras de fer !</div>
+      </li>
+      <li>
+        <div class="mode-emoji">👾</div>
+        <div><strong>Combat de Boss.</strong> Dans chaque monde, affronte un boss redoutable. Ils sont peut-être plus forts que tes amis… Peux-tu tous les vaincre ?</div>
+      </li>
+      <li>
+        <div class="mode-emoji">🔥</div>
+        <div><strong>Streak Challenge.</strong> Mode sans erreur. Combien de bonnes réponses peux-tu enchaîner d'affilée ?</div>
+      </li>
+      <li>
+        <div class="mode-emoji">⚡</div>
+        <div><strong>Speed Challenge.</strong> Teste tes réflexes et deviens le plus rapide.</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Modes EN -->
+  <section class="modes" data-lang="en">
+    <h2>Game modes</h2>
+    <ul class="mode-list">
+      <li>
+        <div class="mode-emoji">🎯</div>
+        <div><strong>Daily Challenge.</strong> One challenge for every player, every day. Will you become the world's fastest calculator?</div>
+      </li>
+      <li>
+        <div class="mode-emoji">⚔️</div>
+        <div><strong>Duel Mode.</strong> Challenge your friends on the same phone. Better than a thumb war!</div>
+      </li>
+      <li>
+        <div class="mode-emoji">👾</div>
+        <div><strong>Battle the Boss.</strong> In every world, face a powerful boss. They might even be stronger than your friends… Can you defeat them all?</div>
+      </li>
+      <li>
+        <div class="mode-emoji">🔥</div>
+        <div><strong>Streak Challenge.</strong> A no-mistake mode. How many correct answers can you chain in a row?</div>
+      </li>
+      <li>
+        <div class="mode-emoji">⚡</div>
+        <div><strong>Speed Challenge.</strong> Test your reflexes and become the fastest.</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Audience FR -->
+  <section class="audience" data-lang="fr">
+    <h2>À qui s'adresse calcThis</h2>
+    <p>Aux <strong style="color:#e2e8f0">élèves et étudiants</strong> qui veulent renforcer leur calcul mental de façon ludique, sans s'en apercevoir.</p>
+    <p>Aux <strong style="color:#e2e8f0">compétiteurs</strong> qui aiment se mesurer à leurs amis et battre des records quotidiens.</p>
+    <p>À <strong style="color:#e2e8f0">tout le monde</strong> — parce qu'un peu de maths chaque jour, c'est comme une salle de sport pour le cerveau.</p>
+  </section>
+
+  <!-- Audience EN -->
+  <section class="audience" data-lang="en">
+    <h2>Who is calcThis for</h2>
+    <p><strong style="color:#e2e8f0">Students</strong> who want to sharpen their mental math skills without even noticing they're learning.</p>
+    <p><strong style="color:#e2e8f0">Competitive players</strong> who love challenging friends and beating daily records.</p>
+    <p><strong style="color:#e2e8f0">Everyone</strong> — because a little math every day is like a gym session for your brain.</p>
+  </section>
+
+  <!-- Premium FR -->
+  <section class="premium" data-lang="fr">
+    <div class="premium-label">Dans le jeu</div>
+    <h2>Personnalise ton expérience</h2>
+    <p>Gagne des pièces en jouant et débloque bien plus.</p>
+    <ul class="premium-features">
+      <li>Pièces à gagner en relevant des défis</li>
+      <li>Nouveaux modes de jeu à débloquer</li>
+      <li>Avatar personnalisable avec des symboles mathématiques</li>
+      <li>Chapeaux et accessoires déjantés</li>
+      <li>Des mondes à explorer et des boss à vaincre</li>
+    </ul>
+  </section>
+
+  <!-- Premium EN -->
+  <section class="premium" data-lang="en">
+    <div class="premium-label">In-game</div>
+    <h2>Customise your experience</h2>
+    <p>Earn coins by playing and unlock much more.</p>
+    <ul class="premium-features">
+      <li>Coins to earn by completing challenges</li>
+      <li>New game modes to unlock</li>
+      <li>Avatar customisation with mathematical symbols</li>
+      <li>Crazy hats and accessories</li>
+      <li>Worlds to explore and bosses to defeat</li>
+    </ul>
+  </section>
+
+  <!-- Footer FR -->
+  <footer data-lang="fr">
+    <p>© 2025 Aromathiz</p>
+    <div style="display:flex;gap:20px">
+      <a href="mailto:contact@aromathiz.com">Contact</a>
+      <a href="/calcthis/privacy">Politique de confidentialité</a>
+    </div>
+  </footer>
+
+  <!-- Footer EN -->
+  <footer data-lang="en">
+    <p>© 2025 Aromathiz</p>
+    <div style="display:flex;gap:20px">
+      <a href="mailto:contact@aromathiz.com">Contact</a>
+      <a href="/calcthis/privacy-en">Privacy policy</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+    localStorage.setItem('calcthis_lang', lang);
+  }
+
+  (function () {
+    const saved = localStorage.getItem('calcthis_lang');
+    const browser = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+    const lang = saved || (browser.startsWith('fr') ? 'fr' : 'en');
+    setLang(lang);
+  })();
+</script>
+</body>
+</html>
