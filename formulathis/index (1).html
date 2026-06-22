@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>formulaThis — Créez de belles formules mathématiques sur Android</title>
+<link rel="icon" type="image/png" href="/img/formulathis_favicon.png">
+<link rel="canonical" href="https://aromathiz.com/formulathis">
+<link rel="alternate" hreflang="fr" href="https://aromathiz.com/formulathis">
+<link rel="alternate" hreflang="en" href="https://aromathiz.com/formulathis/en">
+
+<!-- SEO FR -->
+<meta name="description" content="formulaThis est une app Android pour créer et exporter de belles formules mathématiques en LaTeX. Éditeur assisté, preview en temps réel, export PNG et PDF.">
+<meta name="keywords" content="formule mathématique, LaTeX, éditeur équation, app maths, export formule, Android, algèbre, analyse, physique">
+<meta name="author" content="Aromathiz">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="formulaThis — Formules mathématiques sur Android">
+<meta property="og:description" content="Créez et exportez de belles formules mathématiques en LaTeX, en quelques secondes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aromathiz.com/formulathis">
+<meta property="og:image" content="https://aromathiz.com/formulathis/img/og.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "formulaThis",
+  "description": "Créez et exportez de belles formules mathématiques en LaTeX sur Android.",
+  "operatingSystem": "Android",
+  "applicationCategory": "EducationApplication",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "author": { "@type": "Organization", "name": "Aromathiz", "email": "contact@aromathiz.com" }
+}
+</script>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0b1020;
+  color: #e2e8f0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 860px;
+  margin: auto;
+  padding: 40px 20px 80px;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 20px;
+  font-style: italic;
+  color: #94a3b8;
+}
+
+.brand span { color: #4da3ff; font-weight: 700; }
+
+.lang-switcher {
+  display: flex;
+  gap: 6px;
+}
+
+.lang-btn {
+  font-size: 13px;
+  color: #475569;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.lang-btn:hover { color: #94a3b8; }
+.lang-btn.active { color: #4da3ff; border-color: #1e293b; }
+
+/* ── Hero ── */
+.hero { margin-bottom: 64px; }
+
+.hero h1 {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero h1 em { font-style: italic; color: #4da3ff; }
+
+.hero p {
+  font-size: 17px;
+  color: #94a3b8;
+  max-width: 540px;
+  margin-bottom: 32px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.cta:hover { background: #1d4ed8; }
+.cta svg { width: 20px; height: 20px; }
+
+/* ── Screenshots ── */
+.screenshots {
+  margin-bottom: 64px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screenshots-track {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.screenshot {
+  flex-shrink: 0;
+  width: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+  background: #111827;
+}
+
+.screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Features ── */
+.features { margin-bottom: 64px; }
+
+.features h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+.feature-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2563eb;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.feature-list li strong { color: #e2e8f0; }
+
+/* ── Audience ── */
+.audience { margin-bottom: 64px; }
+
+.audience h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+.audience p {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 12px;
+  max-width: 640px;
+}
+
+/* ── Premium ── */
+.premium {
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 64px;
+}
+
+.premium-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #fbbf24;
+  margin-bottom: 8px;
+}
+
+.premium h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 8px;
+}
+
+.premium p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.premium-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.premium-features li {
+  font-size: 14px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.premium-features li::before {
+  content: '✓';
+  color: #fbbf24;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid #1e293b;
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer p { font-size: 13px; color: #475569; }
+
+footer a {
+  font-size: 13px;
+  color: #475569;
+  text-decoration: none;
+}
+
+footer a:hover { color: #94a3b8; }
+
+/* ── Contenu selon la langue ── */
+[data-lang] { display: none; }
+[data-lang].active { display: block; }
+.feature-list[data-lang].active { display: flex; }
+.premium-features[data-lang].active { display: flex; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">f</div>
+      <div class="brand">formula<span>This</span></div>
+    </div>
+    <nav class="lang-switcher" aria-label="Langue">
+      <a href="#" class="lang-btn active" id="btn-fr" onclick="setLang('fr');return false;">FR</a>
+      <a href="#" class="lang-btn" id="btn-en" onclick="setLang('en');return false;">EN</a>
+    </nav>
+  </header>
+
+  <!-- Hero FR -->
+  <section class="hero" data-lang="fr">
+    <h1>Des formules <em>mathématiques</em><br>belles en quelques secondes.</h1>
+    <p>Tapez en LaTeX ou utilisez les raccourcis — le résultat s'affiche en temps réel. Exportez en PNG ou PDF, prêt à partager.</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.aromathiz.formulathis" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
+      </svg>
+      Télécharger sur Google Play
+    </a>
+  </section>
+
+  <!-- Hero EN -->
+  <section class="hero" data-lang="en">
+    <h1>Beautiful <em>math formulas</em><br>in seconds.</h1>
+    <p>Type in LaTeX or use the shortcuts — the result updates in real time. Export as PNG or PDF, ready to share.</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.aromathiz.formulathis" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
+      </svg>
+      Download on Google Play
+    </a>
+  </section>
+
+  <!-- Screenshots (commun) -->
+  <section class="screenshots" aria-label="Screenshots">
+    <div class="screenshots-track">
+      <div class="screenshot">
+        <img src="/formulathis/img/screen1.png" alt="formulaThis LaTeX editor with real-time preview" width="200" loading="lazy">
+      </div>
+      <div class="screenshot">
+        <img src="/formulathis/img/screen2.png" alt="formulaThis visual themes" width="200" loading="lazy">
+      </div>
+      <div class="screenshot">
+        <img src="/formulathis/img/screen3.png" alt="formulaThis formula library" width="200" loading="lazy">
+      </div>
+      <div class="screenshot">
+        <img src="/formulathis/img/screen4.png" alt="formulaThis PNG export" width="200" loading="lazy">
+      </div>
+      <div class="screenshot">
+        <img src="/formulathis/img/screen5.png" alt="formulaThis history and favorites" width="200" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features FR -->
+  <section class="features" data-lang="fr">
+    <h2>Ce que vous pouvez faire</h2>
+    <ul class="feature-list">
+      <li><div><strong>Éditeur LaTeX assisté.</strong> Tous les symboles mathématiques accessibles en un tap — pas besoin de connaître le LaTeX pour commencer.</div></li>
+      <li><div><strong>Preview en temps réel.</strong> La formule se met à jour à chaque frappe.</div></li>
+      <li><div><strong>Thèmes visuels.</strong> Fond blanc, sombre, néon, hacker, crème, or — et 5 thèmes premium supplémentaires.</div></li>
+      <li><div><strong>Export PNG haute résolution.</strong> Avec ou sans fond — prêt pour WhatsApp, Word, Slides.</div></li>
+      <li><div><strong>Historique automatique.</strong> Vos dernières formules toujours accessibles.</div></li>
+      <li><div><strong>Bibliothèque de formules.</strong> Plus de 120 formules classées par matière : algèbre, analyse, trigonométrie, physique, statistiques et plus.</div></li>
+    </ul>
+  </section>
+
+  <!-- Features EN -->
+  <section class="features" data-lang="en">
+    <h2>What you can do</h2>
+    <ul class="feature-list">
+      <li><div><strong>Assisted LaTeX editor.</strong> All math symbols accessible in one tap — no need to know LaTeX to get started.</div></li>
+      <li><div><strong>Real-time preview.</strong> The formula updates with every keystroke.</div></li>
+      <li><div><strong>Visual themes.</strong> White, dark, neon, hacker, cream, gold — plus 5 exclusive premium themes.</div></li>
+      <li><div><strong>High-resolution PNG export.</strong> With or without background — ready for WhatsApp, Word, Slides.</div></li>
+      <li><div><strong>Automatic history.</strong> Your recent formulas always within reach.</div></li>
+      <li><div><strong>Formula library.</strong> Over 120 formulas organised by subject: algebra, analysis, trigonometry, physics, statistics and more.</div></li>
+    </ul>
+  </section>
+
+  <!-- Audience FR -->
+  <section class="audience" data-lang="fr">
+    <h2>À qui s'adresse formulaThis</h2>
+    <p>Aux <strong style="color:#e2e8f0">étudiants</strong> qui partagent leurs révisions sur WhatsApp ou Instagram et veulent des formules lisibles sans ouvrir Word.</p>
+    <p>Aux <strong style="color:#e2e8f0">enseignants</strong> qui créent des supports pédagogiques et ont besoin d'exporter rapidement une formule propre.</p>
+    <p>À tous ceux qui travaillent avec des maths — physique, chimie, statistiques, économie — et veulent un outil simple, rapide, et beau.</p>
+  </section>
+
+  <!-- Audience EN -->
+  <section class="audience" data-lang="en">
+    <h2>Who is formulaThis for</h2>
+    <p><strong style="color:#e2e8f0">Students</strong> who share their notes on WhatsApp or Instagram and want clean formulas without opening Word.</p>
+    <p><strong style="color:#e2e8f0">Teachers</strong> who create teaching materials and need to export a neat formula quickly.</p>
+    <p>Anyone working with math — physics, chemistry, statistics, economics — who wants a simple, fast, and beautiful tool.</p>
+  </section>
+
+  <!-- Premium FR -->
+  <section class="premium" data-lang="fr">
+    <div class="premium-label">Premium · Achat unique</div>
+    <h2>Encore plus avec Premium</h2>
+    <p>Un seul achat, à vie, sans abonnement.</p>
+    <ul class="premium-features">
+      <li>5 thèmes exclusifs (Crimson, Sable, Menthe, Ciel, Lavande)</li>
+      <li>Favoris illimités</li>
+      <li>Export PDF vectoriel</li>
+      <li>Export PNG sans fond (transparent)</li>
+      <li>Bibliothèque complète de formules</li>
+      <li>Historique illimité</li>
+    </ul>
+  </section>
+
+  <!-- Premium EN -->
+  <section class="premium" data-lang="en">
+    <div class="premium-label">Premium · One-time purchase</div>
+    <h2>Even more with Premium</h2>
+    <p>One purchase, forever, no subscription.</p>
+    <ul class="premium-features">
+      <li>5 exclusive themes (Crimson, Sand, Mint, Sky, Lavender)</li>
+      <li>Unlimited favorites</li>
+      <li>Vector PDF export</li>
+      <li>Transparent PNG export</li>
+      <li>Full formula library</li>
+      <li>Unlimited history</li>
+    </ul>
+  </section>
+
+  <!-- Footer FR -->
+  <footer data-lang="fr">
+    <p>© 2025 Aromathiz</p>
+    <div style="display:flex;gap:20px">
+      <a href="mailto:contact@aromathiz.com">Contact</a>
+      <a href="/formulathis/privacy">Politique de confidentialité</a>
+    </div>
+  </footer>
+
+  <!-- Footer EN -->
+  <footer data-lang="en">
+    <p>© 2025 Aromathiz</p>
+    <div style="display:flex;gap:20px">
+      <a href="mailto:contact@aromathiz.com">Contact</a>
+      <a href="/formulathis/privacy-en">Privacy policy</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    // Mise à jour des éléments visibles
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === lang);
+    });
+
+    // Mise à jour des boutons
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+    // Mise à jour de la balise html
+    document.documentElement.lang = lang;
+
+    // Sauvegarde du choix
+    localStorage.setItem('formulathis_lang', lang);
+  }
+
+  // Détection automatique au chargement
+  (function () {
+    const saved = localStorage.getItem('formulathis_lang');
+    const browser = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+    const lang = saved || (browser.startsWith('fr') ? 'fr' : 'en');
+    setLang(lang);
+  })();
+</script>
+</body>
+</html>
