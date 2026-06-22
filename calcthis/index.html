@@ -106,6 +106,18 @@ body {
 .lang-btn:hover { color: #94a3b8; }
 .lang-btn.active { color: #f87171; border-color: #2d0a0a; }
 
+.back-btn {
+  font-size: 13px;
+  color: #475569;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+  transition: color 0.15s;
+}
+
+.back-btn:hover { color: #94a3b8; }
+  
 /* ── Hero ── */
 .hero { margin-bottom: 64px; }
 
@@ -307,10 +319,13 @@ body.lang-en [data-lang="fr"]                  { display: none;  }
       <div class="logo">±</div>
       <div class="brand">calc<span>This</span></div>
     </div>
-    <nav class="lang-switcher" aria-label="Langue">
-      <a href="#" class="lang-btn active" id="btn-fr" onclick="setLang('fr');return false;">FR</a>
-      <a href="#" class="lang-btn" id="btn-en" onclick="setLang('en');return false;">EN</a>
-    </nav>
+    <div style="display:flex;align-items:center;gap:12px">
+  <a href="https://aromathiz.com" class="back-btn">← Aromathiz</a>
+  <nav class="lang-switcher" aria-label="Langue">
+    <a href="#" class="lang-btn active" id="btn-fr" onclick="setLang('fr');return false;">FR</a>
+    <a href="#" class="lang-btn" id="btn-en" onclick="setLang('en');return false;">EN</a>
+  </nav>
+</div>
   </header>
 
   <!-- Hero FR -->
