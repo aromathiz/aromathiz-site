@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -151,6 +152,34 @@ body {
 
 .cta:hover { background: #c86412; }
 .cta svg { width: 20px; height: 20px; }
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+  background: transparent;
+  color: #f9923c;
+  text-decoration: none;
+  padding: 13px 23px;
+  border-radius: 12px;
+  border: 1px solid #e07214;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cta-secondary:hover {
+  background: #2a1200;
+  color: #fbbf86;
+}
+
+@media (max-width: 600px) {
+  .cta-secondary {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
 
 /* ── Screenshots ── */
 .screenshots {
@@ -342,6 +371,9 @@ body.lang-en [data-lang="fr"]                  { display: none;  }
       </svg>
       Télécharger sur Google Play
     </a>
+    <a class="cta-secondary" href="https://www.aromathiz.com/curvethis/online/">
+      Essayer la version en ligne
+    </a>
   </section>
 
   <!-- Hero EN -->
@@ -353,6 +385,9 @@ body.lang-en [data-lang="fr"]                  { display: none;  }
         <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
       </svg>
       Download on Google Play
+    </a>
+    <a class="cta-secondary" href="https://www.aromathiz.com/curvethis/online/">
+      Try the online version
     </a>
   </section>
 
@@ -470,3 +505,4 @@ body.lang-en [data-lang="fr"]                  { display: none;  }
 </script>
 </body>
 </html>
+```
