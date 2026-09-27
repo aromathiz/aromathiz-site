@@ -160,10 +160,11 @@ body {
 
 /* ── Secondary CTA ── */
 .cta-secondary {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 10px;
-  margin-left: 10px;
+  margin: 10px auto 0;
   background: transparent;
   color: #4da3ff;
   text-decoration: none;
@@ -174,18 +175,12 @@ body {
   font-weight: 600;
   transition: background 0.15s, color 0.15s;
 }
-
 .cta-secondary:hover {
   background: #0f1f3d;
   color: #7bbcff;
 }
 
-@media (max-width: 600px) {
-  .cta-secondary {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-}
+
 
 /* ── Screenshots ── */
 .screenshots {
