@@ -4,404 +4,349 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>formulaThis: Create beautiful math formulas on Android</title>
+<title>formulaThis Guide – Create and export formulas</title>
 
 <link rel="icon" type="image/png" href="/img/formulathis_favicon.png">
-<link rel="canonical" href="https://aromathiz.com/formulathis/guide/en/">
-<link rel="alternate" hreflang="fr" href="https://aromathiz.com/formulathis/guide/">
-<link rel="alternate" hreflang="en" href="https://aromathiz.com/formulathis/guide/en/">
 
-<meta name="description" content="Discover how to create and export beautiful math formulas with formulaThis. Assisted LaTeX editor, real-time preview, PNG and PDF export.">
-<meta name="author" content="Aromathiz">
-<meta name="robots" content="index, follow">
+<link rel="canonical"
+      href="https://aromathiz.com/formulathis/guide/en/">
 
-<meta property="og:title" content="formulaThis: Math formulas on Android">
-<meta property="og:description" content="Create and export beautiful math formulas in seconds.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://aromathiz.com/formulathis/guide/en/">
-<meta property="og:image" content="https://aromathiz.com/formulathis/img/og.png">
-<meta property="og:locale" content="en_US">
+<link rel="alternate"
+      hreflang="fr"
+      href="https://aromathiz.com/formulathis/guide/">
+
+<link rel="alternate"
+      hreflang="en"
+      href="https://aromathiz.com/formulathis/guide/en/">
+
+<meta name="description"
+      content="Learn how to create a mathematical formula with formulaThis and export it as PNG, PDF or to the clipboard.">
 
 <style>
+
+/* Same design as the French guide */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: #0b1020;
-  color: #e2e8f0;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+    background: #0b1020;
+    color: #e2e8f0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
 }
 
 .container {
-  max-width: 860px;
-  margin: auto;
-  padding: 40px 20px 80px;
+    max-width: 820px;
+    margin: auto;
+    padding: 40px 20px 80px;
 }
-
-/* Header */
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 60px;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 70px;
 }
 
 .logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #2563eb, #4da3ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-style: italic;
-  font-weight: 700;
-  color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #2563eb, #4da3ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 13px;
 }
 
 .brand {
-  font-size: 20px;
-  font-style: italic;
-  color: #94a3b8;
+    font-size: 19px;
+    font-style: italic;
+    color: #94a3b8;
 }
 
 .brand span {
-  color: #4da3ff;
-  font-weight: 700;
+    color: #4da3ff;
+    font-weight: 700;
 }
 
 .header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.back-btn,
-.lang-btn {
-  font-size: 13px;
-  color: #64748b;
-  text-decoration: none;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  transition: all 0.15s;
+.back,
+.lang {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid transparent;
 }
 
-.back-btn {
-  border-color: #1e293b;
+.back {
+    border-color: #1e293b;
 }
 
-.back-btn:hover,
-.lang-btn:hover {
-  color: #4da3ff;
+.back:hover,
+.lang:hover {
+    color: #4da3ff;
 }
 
-.lang-switcher {
-  display: flex;
-  gap: 6px;
+.lang.active {
+    color: #4da3ff;
+    border-color: #1e293b;
 }
-
-.lang-btn.active {
-  color: #4da3ff;
-  border-color: #1e293b;
-}
-
-/* Hero */
 
 .hero {
-  margin-bottom: 64px;
+    margin-bottom: 70px;
+}
+
+.hero-label {
+    color: #4da3ff;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
 .hero h1 {
-  font-size: clamp(28px, 5vw, 44px);
-  font-weight: 700;
-  color: #f1f5f9;
-  line-height: 1.2;
-  margin-bottom: 16px;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.15;
+    color: #f1f5f9;
+    margin-bottom: 18px;
 }
 
 .hero h1 em {
-  font-style: italic;
-  color: #4da3ff;
+    color: #4da3ff;
+    font-style: italic;
 }
 
 .hero p {
-  font-size: 17px;
-  color: #94a3b8;
-  max-width: 540px;
-  margin-bottom: 32px;
+    max-width: 600px;
+    color: #94a3b8;
+    font-size: 17px;
 }
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #2563eb;
-  color: white;
-  text-decoration: none;
-  padding: 14px 24px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  transition: background 0.15s;
-}
-
-.cta:hover {
-  background: #1d4ed8;
-}
-
-.cta svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* Screenshots */
-
-.screenshots {
-  margin-bottom: 70px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.screenshots-track {
-  display: flex;
-  gap: 16px;
-  padding-bottom: 8px;
-}
-
-.screenshot {
-  flex-shrink: 0;
-  width: 200px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #1e293b;
-  background: #111827;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-.screenshot img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Video */
 
 .video-section {
-  margin-bottom: 80px;
-  text-align: center;
+    margin-bottom: 85px;
 }
 
-.video-section h2 {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #475569;
-  margin-bottom: 24px;
+.video-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.video-title h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
 }
 
 .video {
-  width: 100%;
-  max-width: 340px;
-  margin: 0 auto;
+    width: 100%;
+    max-width: 340px;
+    margin: auto;
 }
 
 .video-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 9 / 16;
-  background: #111827;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid #1e293b;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
 }
 
 .video-container iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
 }
 
-/* Features */
-
-.features,
-.audience {
-  margin-bottom: 64px;
+.step {
+    margin-bottom: 75px;
 }
 
-.features h2,
-.audience h2 {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #475569;
-  margin-bottom: 24px;
+.step-number {
+    color: #4da3ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
 }
 
-.feature-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.step h2 {
+    font-size: 25px;
+    color: #f1f5f9;
+    margin-bottom: 12px;
 }
 
-.feature-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  color: #94a3b8;
-  font-size: 15px;
+.step p {
+    color: #94a3b8;
+    font-size: 15px;
+    max-width: 650px;
+    margin-bottom: 25px;
 }
 
-.feature-list li::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4da3ff;
-  margin-top: 8px;
-  flex-shrink: 0;
+.demo {
+    border: 1px solid #1e293b;
+    background: #111827;
+    border-radius: 16px;
+    padding: 24px;
 }
 
-.feature-list strong,
-.audience strong {
-  color: #e2e8f0;
+.latex-code {
+    color: #4da3ff;
+    background: #0b1020;
+    border-radius: 10px;
+    padding: 16px;
+    font-family: monospace;
+    font-size: 14px;
+    overflow-x: auto;
+    margin-bottom: 18px;
 }
 
-.audience p {
-  font-size: 15px;
-  color: #64748b;
-  margin-bottom: 12px;
-  max-width: 640px;
+.formula {
+    background: white;
+    color: #111827;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    font-size: 26px;
+    font-family: serif;
 }
 
-/* Premium */
-
-.premium {
-  border: 1px solid #1e293b;
-  border-radius: 16px;
-  padding: 28px;
-  margin-bottom: 64px;
-  background: rgba(15,23,42,0.35);
+.export-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 25px;
 }
 
-.premium-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #4da3ff;
-  margin-bottom: 8px;
+.export-card {
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 20px;
+    background: #111827;
 }
 
-.premium h2 {
-  font-size: 20px;
-  color: #f1f5f9;
-  margin-bottom: 8px;
+.export-card h3 {
+    font-size: 15px;
+    color: #e2e8f0;
+    margin-bottom: 7px;
 }
 
-.premium p {
-  font-size: 14px;
-  color: #64748b;
-  margin-bottom: 20px;
+.export-card p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
 }
 
-.premium-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.final {
+    border-top: 1px solid #1e293b;
+    padding-top: 50px;
+    text-align: center;
 }
 
-.premium-features li {
-  font-size: 14px;
-  color: #94a3b8;
+.final h2 {
+    font-size: 25px;
+    color: #f1f5f9;
+    margin-bottom: 12px;
 }
 
-.premium-features li::before {
-  content: '✓';
-  color: #4da3ff;
-  font-weight: 700;
-  margin-right: 10px;
+.final p {
+    color: #64748b;
+    margin-bottom: 25px;
 }
 
-/* Footer */
+.cta {
+    display: inline-flex;
+    align-items: center;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cta:hover {
+    background: #1d4ed8;
+}
 
 footer {
-  border-top: 1px solid #1e293b;
-  padding-top: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+    margin-top: 70px;
+    padding-top: 25px;
+    border-top: 1px solid #1e293b;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 footer p,
 footer a {
-  font-size: 13px;
-  color: #475569;
+    color: #475569;
+    font-size: 13px;
 }
 
 footer a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 footer a:hover {
-  color: #4da3ff;
+    color: #4da3ff;
 }
-
-/* Mobile */
 
 @media (max-width: 600px) {
 
-  .container {
-    padding: 28px 18px 60px;
-  }
+    .container {
+        padding: 28px 18px 60px;
+    }
 
-  .header {
-    margin-bottom: 50px;
-  }
+    .header {
+        margin-bottom: 55px;
+    }
 
-  .brand {
-    font-size: 18px;
-  }
+    .back {
+        display: none;
+    }
 
-  .back-btn {
-    display: none;
-  }
+    .export-grid {
+        grid-template-columns: 1fr;
+    }
 
-  .hero {
-    margin-bottom: 52px;
-  }
+    .demo {
+        padding: 16px;
+    }
 
-  .hero p {
-    font-size: 16px;
-  }
+    .step h2 {
+        font-size: 22px;
+    }
 
-  .screenshots {
-    margin-left: -18px;
-    margin-right: -18px;
-    padding-left: 18px;
-  }
-
-  .premium {
-    padding: 22px;
-  }
 }
+
 </style>
 </head>
 
@@ -411,236 +356,211 @@ footer a:hover {
 
 <header class="header">
 
-  <div class="header-left">
-    <div class="logo">f</div>
-    <div class="brand">formula<span>This</span></div>
-  </div>
+    <div class="header-left">
 
-  <div class="header-right">
+        <div class="logo">f</div>
 
-    <a href="https://aromathiz.com/formulathis" class="back-btn">
-      ← formulaThis
-    </a>
+        <div class="brand">
+            formula<span>This</span>
+        </div>
 
-    <nav class="lang-switcher" aria-label="Language">
-      <a href="/formulathis/guide/" class="lang-btn">FR</a>
-      <a href="/formulathis/guide/en/" class="lang-btn active">EN</a>
-    </nav>
+    </div>
 
-  </div>
+    <div class="header-right">
+
+        <a href="/formulathis" class="back">
+            ← formulaThis
+        </a>
+
+        <a href="/formulathis/guide/" class="lang">
+            FR
+        </a>
+
+        <a href="/formulathis/guide/en/" class="lang active">
+            EN
+        </a>
+
+    </div>
 
 </header>
 
 
 <section class="hero">
 
-  <h1>
-    Beautiful <em>math formulas</em><br>
-    in seconds.
-  </h1>
-
-  <p>
-    Type in LaTeX or use the shortcuts:
-    the result updates in real time.
-    Export as PNG or PDF, ready to share.
-  </p>
-
-  <a class="cta"
-     href="https://play.google.com/store/apps/details?id=com.aromathiz.formulathis"
-     target="_blank"
-     rel="noopener">
-
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
-    </svg>
-
-    Download on Google Play
-  </a>
-
-</section>
-
-
-<section class="screenshots">
-
-  <div class="screenshots-track">
-
-    <div class="screenshot">
-      <img src="/formulathis/img/formulathis-en-screen-main.png"
-           alt="formulaThis"
-           width="200"
-           loading="lazy">
+    <div class="hero-label">
+        formulaThis Guide
     </div>
 
-    <div class="screenshot">
-      <img src="/formulathis/img/formulathis-en-screen-latex.png"
-           alt="formulaThis LaTeX editor"
-           width="200"
-           loading="lazy">
-    </div>
+    <h1>
+        Create a formula<br>
+        <em>in just a few seconds.</em>
+    </h1>
 
-    <div class="screenshot">
-      <img src="/formulathis/img/formulathis-en-screen-temp.png"
-           alt="formulaThis formulas"
-           width="200"
-           loading="lazy">
-    </div>
-
-    <div class="screenshot">
-      <img src="/formulathis/img/formulathis-en-screen-matrix.png"
-           alt="formulaThis matrices"
-           width="200"
-           loading="lazy">
-    </div>
-
-    <div class="screenshot">
-      <img src="/formulathis/img/formulathis-en-screen-lib.png"
-           alt="formulaThis formula library"
-           width="200"
-           loading="lazy">
-    </div>
-
-    <div class="screenshot">
-      <img src="/formulathis/img/formulathis-en-screen-cat.png"
-           alt="formulaThis categories"
-           width="200"
-           loading="lazy">
-    </div>
-
-  </div>
+    <p>
+        Learn how to enter a formula, preview the result
+        and easily export it with formulaThis.
+    </p>
 
 </section>
 
 
 <section class="video-section">
 
-  <h2>Discover formulaThis</h2>
+    <div class="video-title">
+        <h2>See formulaThis in action</h2>
+    </div>
 
-  <div class="video">
+    <div class="video">
 
-    <div class="video-container">
+        <div class="video-container">
 
-      <iframe
-        src="https://www.youtube.com/embed/x3F_ZPwD7rU"
-        title="formulaThis presentation"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+            <iframe
+                src="https://www.youtube.com/embed/x3F_ZPwD7rU"
+                title="formulaThis presentation"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
+        </div>
 
     </div>
 
-  </div>
+</section>
+
+
+<section class="step">
+
+    <div class="step-number">
+        01 — CREATE
+    </div>
+
+    <h2>Enter your formula</h2>
+
+    <p>
+        Use the visual editor to build your formula
+        with shortcuts and mathematical symbols,
+        or enter your LaTeX code directly.
+    </p>
+
+    <div class="demo">
+
+        <div class="latex-code">
+            x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
+        </div>
+
+        <div class="formula">
+            x = (−b ± √(b² − 4ac)) / 2a
+        </div>
+
+    </div>
 
 </section>
 
 
-<section class="features">
+<section class="step">
 
-  <h2>What you can do</h2>
+    <div class="step-number">
+        02 — PREVIEW
+    </div>
 
-  <ul class="feature-list">
+    <h2>See the result instantly</h2>
 
-    <li>
-      <div>
-        <strong>Assisted LaTeX editor.</strong>
-        All math symbols accessible in one tap.
-        No need to know LaTeX to get started.
-      </div>
-    </li>
-
-    <li>
-      <div>
-        <strong>Real-time preview.</strong>
-        The formula updates with every keystroke.
-      </div>
-    </li>
-
-    <li>
-      <div>
-        <strong>Visual themes.</strong>
-        White, dark, neon and 8 exclusive premium themes.
-      </div>
-    </li>
-
-    <li>
-      <div>
-        <strong>High-resolution PNG export.</strong>
-        With or without background: ready for social networks,
-        slideshows or documents.
-      </div>
-    </li>
-
-    <li>
-      <div>
-        <strong>Automatic history.</strong>
-        Your recent formulas always within reach.
-      </div>
-    </li>
-
-    <li>
-      <div>
-        <strong>Formula library.</strong>
-        Over 120 formulas organised by subject:
-        algebra, analysis, trigonometry, physics, statistics and more.
-      </div>
-    </li>
-
-  </ul>
+    <p>
+        Your formula is rendered immediately.
+        You can adjust your input and check the result
+        before exporting it.
+    </p>
 
 </section>
 
 
-<section class="audience">
+<section class="step">
 
-  <h2>Who is formulaThis for</h2>
+    <div class="step-number">
+        03 — EXPORT
+    </div>
 
-  <p>
-    <strong>Students</strong> who share their notes on social networks
-    or with friends and want clean formulas without opening Word.
-  </p>
+    <h2>Export your formula</h2>
 
-  <p>
-    <strong>Teachers</strong> who create teaching materials
-    and need to export a neat formula quickly.
-  </p>
+    <p>
+        Once your formula is ready, use the export options
+        to use it in documents, presentations, lessons
+        or social media posts.
+    </p>
 
-  <p>
-    Anyone working with math — physics, chemistry, statistics,
-    economics — who wants a simple, fast and beautiful tool.
-  </p>
+    <div class="export-grid">
+
+        <div class="export-card">
+
+            <h3>PNG</h3>
+
+            <p>
+                A high-resolution image, with or without background.
+            </p>
+
+        </div>
+
+        <div class="export-card">
+
+            <h3>Copy</h3>
+
+            <p>
+                Quickly copy your formula to the clipboard.
+            </p>
+
+        </div>
+
+        <div class="export-card">
+
+            <h3>PDF</h3>
+
+            <p>
+                Export your formula as a vector PDF.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<section class="premium">
+<section class="final">
 
-  <div class="premium-label">
-    Premium · One-time purchase
-  </div>
+    <h2>Ready to create your own formulas?</h2>
 
-  <h2>Even more with Premium</h2>
+    <p>
+        Download formulaThis for Android.
+    </p>
 
-  <p>One purchase, forever, no subscription.</p>
+    <a
+        class="cta"
+        href="https://play.google.com/store/apps/details?id=com.aromathiz.formulathis"
+        target="_blank"
+        rel="noopener">
 
-  <ul class="premium-features">
-    <li>8 exclusive themes</li>
-    <li>Unlimited favorites</li>
-    <li>Vector PDF export</li>
-    <li>Transparent PNG export</li>
-    <li>Full formula library</li>
-    <li>Unlimited history</li>
-  </ul>
+        Download formulaThis
+
+    </a>
 
 </section>
 
 
 <footer>
 
-  <p>© 2026 Aromathiz</p>
+    <p>© 2026 Aromathiz</p>
 
-  <div style="display:flex;gap:20px">
-    <a href="mailto:contact@aromathiz.com">Contact</a>
-    <a href="/formulathis/privacy-en">Privacy policy</a>
-  </div>
+    <div style="display:flex;gap:20px">
+
+        <a href="mailto:contact@aromathiz.com">
+            Contact
+        </a>
+
+        <a href="/formulathis">
+            formulaThis
+        </a>
+
+    </div>
 
 </footer>
 
