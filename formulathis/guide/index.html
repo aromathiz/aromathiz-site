@@ -1,476 +1,647 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>formulaThis – Créer et exporter des formules mathématiques</title>
+<title>formulaThis : Créez de belles formules mathématiques sur Android</title>
 
-    <meta name="description" content="Découvrez comment créer des formules mathématiques avec formulaThis, utiliser LaTeX et exporter vos formules en PNG, PDF ou les copier dans le presse-papiers.">
+<link rel="icon" type="image/png" href="/img/formulathis_favicon.png">
+<link rel="canonical" href="https://aromathiz.com/formulathis/guide/">
+<link rel="alternate" hreflang="fr" href="https://aromathiz.com/formulathis/guide/">
+<link rel="alternate" hreflang="en" href="https://aromathiz.com/formulathis/guide/en/">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta name="description" content="Découvrez comment créer et exporter de belles formules mathématiques avec formulaThis. Éditeur LaTeX, aperçu en temps réel, export PNG et PDF.">
+<meta name="author" content="Aromathiz">
+<meta name="robots" content="index, follow">
 
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                         Roboto, Helvetica, Arial, sans-serif;
-            color: #222;
-            background: #fff;
-            line-height: 1.6;
-        }
+<meta property="og:title" content="formulaThis : Formules mathématiques sur Android">
+<meta property="og:description" content="Créez et exportez de belles formules mathématiques en quelques secondes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aromathiz.com/formulathis/guide/">
+<meta property="og:image" content="https://aromathiz.com/formulathis/img/og.png">
+<meta property="og:locale" content="fr_FR">
 
-        a {
-            color: #1976d2;
-            text-decoration: none;
-        }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+body {
+  background: #0b1020;
+  color: #e2e8f0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
 
-        header {
-            max-width: 1000px;
-            margin: auto;
-            padding: 28px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.container {
+  max-width: 860px;
+  margin: auto;
+  padding: 40px 20px 80px;
+}
 
-        .back {
-            font-size: 0.95rem;
-        }
+/* Header */
 
-        .language {
-            font-size: 0.9rem;
-        }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
 
-        .language a {
-            margin-left: 12px;
-        }
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-        .language .active {
-            font-weight: 600;
-            color: #222;
-        }
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb, #4da3ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 700;
+  color: white;
+}
 
-        .hero {
-            max-width: 850px;
-            margin: 65px auto 45px;
-            padding: 0 20px;
-            text-align: center;
-        }
+.brand {
+  font-size: 20px;
+  font-style: italic;
+  color: #94a3b8;
+}
 
-        .hero h1 {
-            font-size: 2.7rem;
-            line-height: 1.2;
-            margin: 0 0 20px;
-        }
+.brand span {
+  color: #4da3ff;
+  font-weight: 700;
+}
 
-        .hero p {
-            max-width: 700px;
-            margin: auto;
-            color: #666;
-            font-size: 1.15rem;
-        }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-        .video {
-            max-width: 850px;
-            margin: 0 auto 90px;
-            padding: 0 20px;
-        }
+.back-btn,
+.lang-btn {
+  font-size: 13px;
+  color: #64748b;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #111;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
+.back-btn {
+  border-color: #1e293b;
+}
 
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+.back-btn:hover,
+.lang-btn:hover {
+  color: #4da3ff;
+}
 
-        section {
-            max-width: 950px;
-            margin: auto;
-            padding: 70px 20px;
-        }
+.lang-switcher {
+  display: flex;
+  gap: 6px;
+}
 
-        section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin: 0 0 15px;
-        }
+.lang-btn.active {
+  color: #4da3ff;
+  border-color: #1e293b;
+}
 
-        .intro {
-            max-width: 700px;
-            margin: 0 auto 45px;
-            text-align: center;
-            color: #666;
-        }
+/* Hero */
 
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+.hero {
+  margin-bottom: 64px;
+}
 
-        .step {
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 30px 25px;
-            text-align: center;
-        }
+.hero h1 {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
 
-        .number {
-            color: #1976d2;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
+.hero h1 em {
+  font-style: italic;
+  color: #4da3ff;
+}
 
-        .step h3 {
-            margin: 5px 0 10px;
-        }
+.hero p {
+  font-size: 17px;
+  color: #94a3b8;
+  max-width: 540px;
+  margin-bottom: 32px;
+}
 
-        .step p {
-            margin: 0;
-            color: #666;
-        }
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
 
-        .latex-section,
-        .cta {
-            max-width: none;
-            background: #f7f9fc;
-        }
+.cta:hover {
+  background: #1d4ed8;
+}
 
-        .latex-content,
-        .cta-content {
-            max-width: 950px;
-            margin: auto;
-            padding: 0 20px;
-        }
+.cta svg {
+  width: 20px;
+  height: 20px;
+}
 
-        .latex-example {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
+/* Screenshots */
 
-        .code-box,
-        .formula-box {
-            min-height: 160px;
-            padding: 30px;
-            border-radius: 12px;
-            background: #fff;
-            border: 1px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.screenshots {
+  margin-bottom: 70px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
-        .code-box {
-            justify-content: flex-start;
-            font-family: monospace;
-            color: #1976d2;
-            overflow-x: auto;
-        }
+.screenshots-track {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 8px;
+}
 
-        .formula-box {
-            font-size: 1.8rem;
-        }
+.screenshot {
+  flex-shrink: 0;
+  width: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+  background: #111827;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
 
-        .export {
-            text-align: center;
-        }
+.screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-        .export-items {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
+/* Video */
 
-        .export-item {
-            width: 200px;
-            padding: 25px;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-        }
+.video-section {
+  margin-bottom: 80px;
+  text-align: center;
+}
 
-        .export-item strong {
-            display: block;
-            margin-bottom: 6px;
-        }
+.video-section h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #475569;
+  margin-bottom: 24px;
+}
 
-        .export-item span {
-            color: #666;
-            font-size: 0.9rem;
-        }
+.video {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
 
-        .cta {
-            text-align: center;
-        }
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #111827;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
 
-        .cta-content {
-            max-width: 700px;
-        }
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
 
-        .button {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 13px 28px;
-            background: #1976d2;
-            color: #fff;
-            border-radius: 8px;
-            font-weight: 600;
-        }
+/* Features */
 
-        .button:hover {
-            text-decoration: none;
-            opacity: 0.9;
-        }
+.features,
+.audience {
+  margin-bottom: 64px;
+}
 
-        footer {
-            padding: 35px 20px;
-            text-align: center;
-            color: #777;
-            font-size: 0.9rem;
-        }
+.features h2,
+.audience h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #475569;
+  margin-bottom: 24px;
+}
 
-        @media (max-width: 700px) {
-            .hero h1 {
-                font-size: 2.1rem;
-            }
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-            .steps,
-            .latex-example {
-                grid-template-columns: 1fr;
-            }
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #94a3b8;
+  font-size: 15px;
+}
 
-            header {
-                padding-top: 20px;
-            }
-        }
-    </style>
+.feature-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4da3ff;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.feature-list strong,
+.audience strong {
+  color: #e2e8f0;
+}
+
+.audience p {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 12px;
+  max-width: 640px;
+}
+
+/* Premium */
+
+.premium {
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 64px;
+  background: rgba(15,23,42,0.35);
+}
+
+.premium-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4da3ff;
+  margin-bottom: 8px;
+}
+
+.premium h2 {
+  font-size: 20px;
+  color: #f1f5f9;
+  margin-bottom: 8px;
+}
+
+.premium p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.premium-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.premium-features li {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.premium-features li::before {
+  content: '✓';
+  color: #4da3ff;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+/* Footer */
+
+footer {
+  border-top: 1px solid #1e293b;
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer p,
+footer a {
+  font-size: 13px;
+  color: #475569;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #4da3ff;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 28px 18px 60px;
+  }
+
+  .header {
+    margin-bottom: 50px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .back-btn {
+    display: none;
+  }
+
+  .hero {
+    margin-bottom: 52px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .screenshots {
+    margin-left: -18px;
+    margin-right: -18px;
+    padding-left: 18px;
+  }
+
+  .premium {
+    padding: 22px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header>
+<div class="container">
 
-    <a class="back" href="https://www.aromathiz.com/formulathis">
-        ← formulaThis
+<header class="header">
+
+  <div class="header-left">
+    <div class="logo">f</div>
+    <div class="brand">formula<span>This</span></div>
+  </div>
+
+  <div class="header-right">
+    <a href="https://aromathiz.com/formulathis" class="back-btn">
+      ← formulaThis
     </a>
 
-    <div class="language">
-        <span class="active">FR</span>
-        <a href="/formulathis/guide/en/">EN</a>
-    </div>
+    <nav class="lang-switcher" aria-label="Langue">
+      <a href="/formulathis/guide/" class="lang-btn active">FR</a>
+      <a href="/formulathis/guide/en/" class="lang-btn">EN</a>
+    </nav>
+  </div>
 
 </header>
 
 
-<main>
+<section class="hero">
 
-    <div class="hero">
+  <h1>
+    D'élégantes formules<br>
+    <em>mathématiques</em> en quelques secondes.
+  </h1>
 
-        <h1>Créer des formules mathématiques simplement</h1>
+  <p>
+    Tapez en LaTeX ou utilisez les raccourcis :
+    le résultat s'affiche en temps réel.
+    Exportez en PNG ou PDF, prêt à partager.
+  </p>
 
-        <p>
-            Découvrez comment utiliser formulaThis pour créer vos formules
-            avec l'éditeur visuel ou avec du code LaTeX, puis les exporter
-            facilement.
-        </p>
+  <a class="cta"
+     href="https://play.google.com/store/apps/details?id=com.aromathiz.formulathis"
+     target="_blank"
+     rel="noopener">
+
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
+    </svg>
+
+    Télécharger sur Google Play
+  </a>
+
+</section>
+
+
+<section class="screenshots">
+
+  <div class="screenshots-track">
+
+    <div class="screenshot">
+      <img src="/formulathis/img/formulathis-en-screen-main.png"
+           alt="formulaThis"
+           width="200"
+           loading="lazy">
+    </div>
+
+    <div class="screenshot">
+      <img src="/formulathis/img/formulathis-en-screen-latex.png"
+           alt="Éditeur LaTeX formulaThis"
+           width="200"
+           loading="lazy">
+    </div>
+
+    <div class="screenshot">
+      <img src="/formulathis/img/formulathis-en-screen-temp.png"
+           alt="Formules formulaThis"
+           width="200"
+           loading="lazy">
+    </div>
+
+    <div class="screenshot">
+      <img src="/formulathis/img/formulathis-en-screen-matrix.png"
+           alt="Matrices formulaThis"
+           width="200"
+           loading="lazy">
+    </div>
+
+    <div class="screenshot">
+      <img src="/formulathis/img/formulathis-en-screen-lib.png"
+           alt="Bibliothèque formulaThis"
+           width="200"
+           loading="lazy">
+    </div>
+
+    <div class="screenshot">
+      <img src="/formulathis/img/formulathis-en-screen-cat.png"
+           alt="Catégories formulaThis"
+           width="200"
+           loading="lazy">
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="video-section">
+
+  <h2>Découvrez formulaThis</h2>
+
+  <div class="video">
+
+    <div class="video-container">
+
+      <iframe
+        src="https://www.youtube.com/embed/x3F_ZPwD7rU"
+        title="Présentation de formulaThis"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
 
     </div>
 
+  </div>
 
-    <div class="video">
-
-        <div class="video-container">
-
-            <iframe
-    src="https://www.youtube.com/embed/x3F_ZPwD7rU"
-    title="Présentation de formulaThis"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-</iframe>
-
-        </div>
-
-    </div>
+</section>
 
 
-    <section>
+<section class="features">
 
-        <h2>Créer une formule en quelques étapes</h2>
+  <h2>Ce que vous pouvez faire</h2>
 
-        <p class="intro">
-            formulaThis vous permet de construire des formules mathématiques
-            directement depuis votre téléphone.
-        </p>
+  <ul class="feature-list">
 
-        <div class="steps">
+    <li>
+      <div>
+        <strong>Éditeur LaTeX assisté.</strong>
+        Tous les symboles mathématiques accessibles en un tap.
+        Pas besoin de connaître le LaTeX pour commencer.
+      </div>
+    </li>
 
-            <div class="step">
+    <li>
+      <div>
+        <strong>Preview en temps réel.</strong>
+        La formule se met à jour à chaque frappe.
+      </div>
+    </li>
 
-                <div class="number">ÉTAPE 1</div>
+    <li>
+      <div>
+        <strong>Thèmes visuels.</strong>
+        Fond blanc, sombre, néon et 8 thèmes premium supplémentaires.
+      </div>
+    </li>
 
-                <h3>Saisissez</h3>
+    <li>
+      <div>
+        <strong>Export PNG haute résolution.</strong>
+        Avec ou sans fond : prêt à partager sur les réseaux sociaux,
+        présentations ou documents.
+      </div>
+    </li>
 
-                <p>
-                    Utilisez l'éditeur visuel et ses boutons dédiés
-                    pour construire votre formule.
-                </p>
+    <li>
+      <div>
+        <strong>Historique automatique.</strong>
+        Vos dernières formules toujours accessibles.
+      </div>
+    </li>
 
-            </div>
+    <li>
+      <div>
+        <strong>Bibliothèque de formules.</strong>
+        Plus de 120 formules classées par matière :
+        algèbre, analyse, trigonométrie, physique, statistiques et plus.
+      </div>
+    </li>
 
+  </ul>
 
-            <div class="step">
-
-                <div class="number">ÉTAPE 2</div>
-
-                <h3>Visualisez</h3>
-
-                <p>
-                    Le rendu de votre formule apparaît instantanément
-                    à l'écran.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="number">ÉTAPE 3</div>
-
-                <h3>Exportez</h3>
-
-                <p>
-                    Exportez votre formule en PNG ou PDF,
-                    ou copiez-la dans le presse-papiers.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="latex-section">
-
-        <div class="latex-content">
-
-            <h2>Vous connaissez LaTeX ?</h2>
-
-            <p class="intro">
-                Vous pouvez également saisir directement votre code LaTeX
-                et visualiser immédiatement le résultat.
-            </p>
-
-            <div class="latex-example">
-
-                <div class="code-box">
-                    \frac{-b+\sqrt{b^2-4ac}}{2a}
-                </div>
-
-                <div class="formula-box">
-                    \span>
-                        \(\frac{-b+\sqrt{b^2-4ac}}{2a}\)
-                    </span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+</section>
 
 
-    <section class="export">
+<section class="audience">
 
-        <h2>Exportez vos formules</h2>
+  <h2>À qui s'adresse formulaThis</h2>
 
-        <p class="intro">
-            Une fois votre formule créée, utilisez-la où vous en avez besoin.
-        </p>
+  <p>
+    Aux <strong>étudiants</strong> qui partagent leurs révisions
+    sur les réseaux ou avec leurs amis et veulent des formules
+    lisibles sans ouvrir Word.
+  </p>
 
-        <div class="export-items">
+  <p>
+    Aux <strong>enseignants</strong> qui créent des supports pédagogiques
+    et ont besoin d'exporter rapidement une formule propre.
+  </p>
 
-            <div class="export-item">
-                <strong>PNG</strong>
-                <span>
-                    Exportez votre formule sous forme d'image.
-                </span>
-            </div>
+  <p>
+    À tous ceux qui travaillent avec les maths — physique, chimie,
+    statistiques, économie — et veulent un outil simple, rapide et beau.
+  </p>
 
-            <div class="export-item">
-                <strong>Copier</strong>
-                <span>
-                    Copiez votre formule dans le presse-papiers.
-                </span>
-            </div>
-
-            <div class="export-item">
-                <strong>PDF</strong>
-                <span>
-                    Créez un document PDF contenant votre formule.
-                </span>
-            </div>
-
-        </div>
-
-    </section>
+</section>
 
 
-    <section class="cta">
+<section class="premium">
 
-        <div class="cta-content">
+  <div class="premium-label">Premium · Achat unique</div>
 
-            <h2>Découvrez formulaThis</h2>
+  <h2>Encore plus avec Premium</h2>
 
-            <p>
-                Créez des formules mathématiques, visualisez-les
-                instantanément et exportez-les facilement.
-            </p>
+  <p>Un seul achat, à vie, sans abonnement.</p>
 
-            <a class="button"
-               href="https://www.aromathiz.com/formulathis">
-                Retourner sur formulaThis
-            </a>
+  <ul class="premium-features">
+    <li>8 thèmes exclusifs</li>
+    <li>Favoris illimités</li>
+    <li>Export PDF vectoriel</li>
+    <li>Export PNG sans fond</li>
+    <li>Bibliothèque complète de formules</li>
+    <li>Historique illimité</li>
+  </ul>
 
-        </div>
-
-    </section>
-
-</main>
+</section>
 
 
 <footer>
 
-    <a href="https://www.aromathiz.com/formulathis">
-        formulaThis
-    </a>
+  <p>© 2026 Aromathiz</p>
 
-    ·
-
-    <a href="https://www.aromathiz.com">
-        Aromathiz
-    </a>
+  <div style="display:flex;gap:20px">
+    <a href="mailto:contact@aromathiz.com">Contact</a>
+    <a href="/formulathis/privacy">Politique de confidentialité</a>
+  </div>
 
 </footer>
+
+</div>
 
 </body>
 </html>
