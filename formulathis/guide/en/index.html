@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>formulaThis – Create and export mathematical formulas</title>
+
+    <meta name="description" content="Learn how to create mathematical formulas with formulaThis, use LaTeX, and export your formulas as PNG, PDF or copy them to the clipboard.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
+            color: #222;
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            max-width: 1000px;
+            margin: auto;
+            padding: 28px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back {
+            font-size: 0.95rem;
+        }
+
+        .language {
+            font-size: 0.9rem;
+        }
+
+        .language a {
+            margin-left: 12px;
+        }
+
+        .language .active {
+            font-weight: 600;
+            color: #222;
+        }
+
+        .hero {
+            max-width: 850px;
+            margin: 65px auto 45px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.7rem;
+            line-height: 1.2;
+            margin: 0 0 20px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #666;
+            font-size: 1.15rem;
+        }
+
+        .video {
+            max-width: 850px;
+            margin: 0 auto 90px;
+            padding: 0 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #111;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        section {
+            max-width: 950px;
+            margin: auto;
+            padding: 70px 20px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin: 0 0 15px;
+        }
+
+        .intro {
+            max-width: 700px;
+            margin: 0 auto 45px;
+            text-align: center;
+            color: #666;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .step {
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .number {
+            color: #1976d2;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step h3 {
+            margin: 5px 0 10px;
+        }
+
+        .step p {
+            margin: 0;
+            color: #666;
+        }
+
+        .latex-section,
+        .cta {
+            max-width: none;
+            background: #f7f9fc;
+        }
+
+        .latex-content,
+        .cta-content {
+            max-width: 950px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .latex-example {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .code-box,
+        .formula-box {
+            min-height: 160px;
+            padding: 30px;
+            border-radius: 12px;
+            background: #fff;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code-box {
+            justify-content: flex-start;
+            font-family: monospace;
+            color: #1976d2;
+            overflow-x: auto;
+        }
+
+        .formula-box {
+            font-size: 1.8rem;
+        }
+
+        .export {
+            text-align: center;
+        }
+
+        .export-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .export-item {
+            width: 200px;
+            padding: 25px;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+        }
+
+        .export-item strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .export-item span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .cta {
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 28px;
+            background: #1976d2;
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        footer {
+            padding: 35px 20px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .steps,
+            .latex-example {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <a class="back" href="https://www.aromathiz.com/formulathis">
+        ← formulaThis
+    </a>
+
+    <div class="language">
+        <a href="/formulathis/guide/">FR</a>
+        <span class="active">EN</span>
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="hero">
+
+        <h1>Create mathematical formulas with ease</h1>
+
+        <p>
+            Discover how to use formulaThis to create formulas with
+            the visual editor or directly with LaTeX, then export them
+            with just a few taps.
+        </p>
+
+    </div>
+
+
+    <div class="video">
+
+        <div class="video-container">
+
+            <!-- Replace VIDEO_ID with your YouTube video ID -->
+
+            <iframe
+                src="https://youtube.com/shorts/x3F_ZPwD7rU?si=vVy31zYhJS5W7LlV"
+                title="formulaThis presentation"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+
+    <section>
+
+        <h2>Create a formula in a few steps</h2>
+
+        <p class="intro">
+            formulaThis lets you build mathematical formulas directly
+            from your phone.
+        </p>
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="number">STEP 1</div>
+
+                <h3>Create</h3>
+
+                <p>
+                    Use the visual editor and dedicated buttons
+                    to build your formula.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="number">STEP 2</div>
+
+                <h3>Preview</h3>
+
+                <p>
+                    See the rendered formula instantly as you edit it.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="number">STEP 3</div>
+
+                <h3>Export</h3>
+
+                <p>
+                    Export your formula as a PNG or PDF,
+                    or copy it to the clipboard.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="latex-section">
+
+        <div class="latex-content">
+
+            <h2>Already know LaTeX?</h2>
+
+            <p class="intro">
+                You can also enter your LaTeX code directly
+                and see the result instantly.
+            </p>
+
+            <div class="latex-example">
+
+                <div class="code-box">
+                    \frac{-b+\sqrt{b^2-4ac}}{2a}
+                </div>
+
+                <div class="formula-box">
+                    <span>
+                        \(\frac{-b+\sqrt{b^2-4ac}}{2a}\)
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="export">
+
+        <h2>Export your formulas</h2>
+
+        <p class="intro">
+            Once your formula is ready, use it wherever you need it.
+        </p>
+
+        <div class="export-items">
+
+            <div class="export-item">
+                <strong>PNG</strong>
+                <span>
+                    Export your formula as an image.
+                </span>
+            </div>
+
+            <div class="export-item">
+                <strong>Copy</strong>
+                <span>
+                    Quickly copy your formula to the clipboard.
+                </span>
+            </div>
+
+            <div class="export-item">
+                <strong>PDF</strong>
+                <span>
+                    Create a PDF document containing your formula.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="cta">
+
+        <div class="cta-content">
+
+            <h2>Discover formulaThis</h2>
+
+            <p>
+                Create mathematical formulas, preview them instantly
+                and export them with ease.
+            </p>
+
+            <a class="button"
+               href="https://www.aromathiz.com/formulathis">
+                Back to formulaThis
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <a href="https://www.aromathiz.com/formulathis">
+        formulaThis
+    </a>
+
+    ·
+
+    <a href="https://www.aromathiz.com">
+        Aromathiz
+    </a>
+
+</footer>
+
+</body>
+</html>
