@@ -117,7 +117,7 @@ body {
 }
 
 .back-btn:hover { color: #94a3b8; }
-  
+
 .lang-btn:hover { color: #94a3b8; }
 .lang-btn.active { color: #4da3ff; border-color: #1e293b; }
 
@@ -157,6 +157,35 @@ body {
 
 .cta:hover { background: #1d4ed8; }
 .cta svg { width: 20px; height: 20px; }
+
+/* ── Secondary CTA ── */
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+  background: transparent;
+  color: #4da3ff;
+  text-decoration: none;
+  padding: 13px 23px;
+  border-radius: 12px;
+  border: 1px solid #2563eb;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cta-secondary:hover {
+  background: #0f1f3d;
+  color: #7bbcff;
+}
+
+@media (max-width: 600px) {
+  .cta-secondary {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
 
 /* ── Screenshots ── */
 .screenshots {
@@ -321,6 +350,7 @@ footer a:hover { color: #94a3b8; }
 .premium-features[data-lang].active { display: flex; }
 </style>
 </head>
+
 <body>
 <div class="container">
 
@@ -330,110 +360,237 @@ footer a:hover { color: #94a3b8; }
       <div class="logo">f</div>
       <div class="brand">formula<span>This</span></div>
     </div>
+
     <div style="display:flex;align-items:center;gap:12px">
-  <a href="https://aromathiz.com" class="back-btn">← Aromathiz</a>
-  <nav class="lang-switcher" aria-label="Langue">
-    <a href="#" class="lang-btn active" id="btn-fr" onclick="setLang('fr');return false;">FR</a>
-    <a href="#" class="lang-btn" id="btn-en" onclick="setLang('en');return false;">EN</a>
-  </nav>
-</div>
+      <a href="https://aromathiz.com" class="back-btn">← Aromathiz</a>
+
+      <nav class="lang-switcher" aria-label="Langue">
+        <a href="#" class="lang-btn active" id="btn-fr" onclick="setLang('fr');return false;">FR</a>
+        <a href="#" class="lang-btn" id="btn-en" onclick="setLang('en');return false;">EN</a>
+      </nav>
+    </div>
   </header>
 
   <!-- Hero FR -->
   <section class="hero" data-lang="fr">
     <h1>D'élégantes formules <br><em>mathématiques</em> en quelques secondes.</h1>
-    <p>Tapez en LaTeX ou utilisez les raccourcis : le résultat s'affiche en temps réel. Exportez en PNG ou PDF, prêt à partager.</p>
+
+    <p>
+      Tapez en LaTeX ou utilisez les raccourcis : le résultat s'affiche en temps réel.
+      Exportez en PNG ou PDF, prêt à partager.
+    </p>
+
     <a class="cta" href="https://play.google.com/store/apps/details?id=com.aromathiz.formulathis" target="_blank">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
       </svg>
       Télécharger sur Google Play
     </a>
+
+    <a class="cta-secondary" href="/formulathis/guide/">
+      Voir le guide
+    </a>
   </section>
 
   <!-- Hero EN -->
   <section class="hero" data-lang="en">
     <h1>Beautiful <em>math formulas</em><br>in seconds.</h1>
-    <p>Type in LaTeX or use the shortcuts: the result updates in real time. Export as PNG or PDF, ready to share.</p>
+
+    <p>
+      Type in LaTeX or use the shortcuts: the result updates in real time.
+      Export as PNG or PDF, ready to share.
+    </p>
+
     <a class="cta" href="https://play.google.com/store/apps/details?id=com.aromathiz.formulathis" target="_blank">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
       </svg>
       Download on Google Play
     </a>
+
+    <a class="cta-secondary" href="/formulathis/guide/en/">
+      View the guide
+    </a>
   </section>
 
   <!-- Screenshots (commun) -->
   <section class="screenshots" aria-label="Screenshots">
     <div class="screenshots-track">
+
       <div class="screenshot">
         <img src="/formulathis/img/formulathis-en-screen-main.png" alt="formulaThis visual themes" width="200" loading="lazy">
       </div>
+
       <div class="screenshot">
         <img src="/formulathis/img/formulathis-en-screen-latex.png" alt="formulaThis visual themes" width="200" loading="lazy">
       </div>
+
       <div class="screenshot">
         <img src="/formulathis/img/formulathis-en-screen-temp.png" alt="formulaThis formula library" width="200" loading="lazy">
       </div>
+
       <div class="screenshot">
         <img src="/formulathis/img/formulathis-en-screen-matrix.png" alt="formulaThis PNG export" width="200" loading="lazy">
       </div>
+
       <div class="screenshot">
         <img src="/formulathis/img/formulathis-en-screen-lib.png" alt="formulaThis history and favorites" width="200" loading="lazy">
       </div>
+
       <div class="screenshot">
         <img src="/formulathis/img/formulathis-en-screen-cat.png" alt="formulaThis history and favorites" width="200" loading="lazy">
       </div>
+
     </div>
   </section>
 
   <!-- Features FR -->
   <section class="features" data-lang="fr">
     <h2>Ce que vous pouvez faire</h2>
+
     <ul class="feature-list">
-      <li><div><strong>Éditeur LaTeX assisté.</strong> Tous les symboles mathématiques accessibles en un tap. Pas besoin de connaître le LaTeX pour commencer.</div></li>
-      <li><div><strong>Preview en temps réel.</strong> La formule se met à jour à chaque frappe.</div></li>
-      <li><div><strong>Thèmes visuels.</strong> Fond blanc, sombre, néon et 8 thèmes premium supplémentaires.</div></li>
-      <li><div><strong>Export PNG haute résolution.</strong> Avec ou sans fond : prêt à partage sur les réseaux sociaux, présentations ou documents.</div></li>
-      <li><div><strong>Historique automatique.</strong> Vos dernières formules toujours accessibles.</div></li>
-      <li><div><strong>Bibliothèque de formules.</strong> Plus de 120 formules classées par matière : algèbre, analyse, trigonométrie, physique, statistiques et plus.</div></li>
+      <li>
+        <div>
+          <strong>Éditeur LaTeX assisté.</strong>
+          Tous les symboles mathématiques accessibles en un tap.
+          Pas besoin de connaître le LaTeX pour commencer.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Preview en temps réel.</strong>
+          La formule se met à jour à chaque frappe.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Thèmes visuels.</strong>
+          Fond blanc, sombre, néon et 8 thèmes premium supplémentaires.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Export PNG haute résolution.</strong>
+          Avec ou sans fond : prêt à partage sur les réseaux sociaux, présentations ou documents.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Historique automatique.</strong>
+          Vos dernières formules toujours accessibles.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Bibliothèque de formules.</strong>
+          Plus de 120 formules classées par matière : algèbre, analyse, trigonométrie, physique, statistiques et plus.
+        </div>
+      </li>
     </ul>
   </section>
 
   <!-- Features EN -->
   <section class="features" data-lang="en">
     <h2>What you can do</h2>
+
     <ul class="feature-list">
-      <li><div><strong>Assisted LaTeX editor.</strong> All math symbols accessible in one tap. No need to know LaTeX to get started.</div></li>
-      <li><div><strong>Real-time preview.</strong> The formula updates with every keystroke.</div></li>
-      <li><div><strong>Visual themes.</strong> White, dark, neon and 8 exclusive premium themes.</div></li>
-      <li><div><strong>High-resolution PNG export.</strong> With or without background : ready for social networks, diaporamas or documents.</div></li>
-      <li><div><strong>Automatic history.</strong> Your recent formulas always within reach.</div></li>
-      <li><div><strong>Formula library.</strong> Over 120 formulas organised by subject: algebra, analysis, trigonometry, physics, statistics and more.</div></li>
+      <li>
+        <div>
+          <strong>Assisted LaTeX editor.</strong>
+          All math symbols accessible in one tap. No need to know LaTeX to get started.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Real-time preview.</strong>
+          The formula updates with every keystroke.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Visual themes.</strong>
+          White, dark, neon and 8 exclusive premium themes.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>High-resolution PNG export.</strong>
+          With or without background : ready for social networks, diaporamas or documents.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Automatic history.</strong>
+          Your recent formulas always within reach.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Formula library.</strong>
+          Over 120 formulas organised by subject: algebra, analysis, trigonometry, physics, statistics and more.
+        </div>
+      </li>
     </ul>
   </section>
 
   <!-- Audience FR -->
   <section class="audience" data-lang="fr">
     <h2>À qui s'adresse formulaThis</h2>
-    <p>Aux <strong style="color:#e2e8f0">étudiants</strong> qui partagent leurs révisions sur les réseaux ou avec leurs amis et veulent des formules lisibles sans ouvrir Word.</p>
-    <p>Aux <strong style="color:#e2e8f0">enseignants</strong> qui créent des supports pédagogiques et ont besoin d'exporter rapidement une formule propre.</p>
-    <p>À tous ceux qui travaillent avec des maths — physique, chimie, statistiques, économie et veulent un outil simple, rapide, et beau.</p>
+
+    <p>
+      Aux <strong style="color:#e2e8f0">étudiants</strong> qui partagent leurs révisions
+      sur les réseaux ou avec leurs amis et veulent des formules lisibles sans ouvrir Word.
+    </p>
+
+    <p>
+      Aux <strong style="color:#e2e8f0">enseignants</strong> qui créent des supports pédagogiques
+      et ont besoin d'exporter rapidement une formule propre.
+    </p>
+
+    <p>
+      À tous ceux qui travaillent avec des maths — physique, chimie, statistiques,
+      économie et veulent un outil simple, rapide, et beau.
+    </p>
   </section>
 
   <!-- Audience EN -->
   <section class="audience" data-lang="en">
     <h2>Who is formulaThis for</h2>
-    <p><strong style="color:#e2e8f0">Students</strong> who share their notes on social networks or with friends and want clean formulas without opening Word.</p>
-    <p><strong style="color:#e2e8f0">Teachers</strong> who create teaching materials and need to export a neat formula quickly.</p>
-    <p>Anyone working with math — physics, chemistry, statistics, economics who wants a simple, fast, and beautiful tool.</p>
+
+    <p>
+      <strong style="color:#e2e8f0">Students</strong> who share their notes on social networks
+      or with friends and want clean formulas without opening Word.
+    </p>
+
+    <p>
+      <strong style="color:#e2e8f0">Teachers</strong> who create teaching materials
+      and need to export a neat formula quickly.
+    </p>
+
+    <p>
+      Anyone working with math — physics, chemistry, statistics, economics
+      who wants a simple, fast, and beautiful tool.
+    </p>
   </section>
 
   <!-- Premium FR -->
   <section class="premium" data-lang="fr">
     <div class="premium-label">Premium · Achat unique</div>
+
     <h2>Encore plus avec Premium</h2>
+
     <p>Un seul achat, à vie, sans abonnement.</p>
+
     <ul class="premium-features">
       <li>8 thèmes exclusifs (Hacker, Paper, Gold, Crimson, Sable, Menthe, Ciel, Lavande)</li>
       <li>Favoris illimités</li>
@@ -447,8 +604,11 @@ footer a:hover { color: #94a3b8; }
   <!-- Premium EN -->
   <section class="premium" data-lang="en">
     <div class="premium-label">Premium · One-time purchase</div>
+
     <h2>Even more with Premium</h2>
+
     <p>One purchase, forever, no subscription.</p>
+
     <ul class="premium-features">
       <li>8 exclusive themes (Hacker, Paper, Gold, Crimson, Sable, Menthe, Ciel, Lavande)</li>
       <li>Unlimited favorites</li>
@@ -462,6 +622,7 @@ footer a:hover { color: #94a3b8; }
   <!-- Footer FR -->
   <footer data-lang="fr">
     <p>© 2026 Aromathiz</p>
+
     <div style="display:flex;gap:20px">
       <a href="mailto:contact@aromathiz.com">Contact</a>
       <a href="/formulathis/privacy">Politique de confidentialité</a>
@@ -471,6 +632,7 @@ footer a:hover { color: #94a3b8; }
   <!-- Footer EN -->
   <footer data-lang="en">
     <p>© 2026 Aromathiz</p>
+
     <div style="display:flex;gap:20px">
       <a href="mailto:contact@aromathiz.com">Contact</a>
       <a href="/formulathis/privacy-en">Privacy policy</a>
@@ -505,5 +667,6 @@ footer a:hover { color: #94a3b8; }
     setLang(lang);
   })();
 </script>
+
 </body>
 </html>
