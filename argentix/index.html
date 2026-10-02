@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Argentix : Suivre ton épargne</title>
+
+<link rel="icon" type="image/png" href="/argentix/img/favicon.png">
+<link rel="canonical" href="https://aromathiz.com/argentix/">
+
+<meta name="description" content="Argentix t'aide à suivre ton épargne, visualiser son évolution et projeter ton avenir financier. Sans publicité, sans compte et sans collecte de données.">
+<meta name="keywords" content="épargne, suivi épargne, projection financière, patrimoine, argent, objectifs financiers, application épargne">
+<meta name="author" content="Aromathiz">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Argentix : Suivre ton épargne">
+<meta property="og:description" content="Visualise ton épargne et projette-toi dans ton avenir financier.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aromathiz.com/argentix/">
+<meta property="og:image" content="https://aromathiz.com/argentix/img/logo.png">
+<meta property="og:locale" content="fr_FR">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Argentix",
+  "description": "Application Android pour suivre son épargne, visualiser son évolution et projeter son avenir financier.",
+  "operatingSystem": "Android",
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Aromathiz",
+    "email": "contact@aromathiz.com"
+  }
+}
+</script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #07130d;
+  color: #e2e8f0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 860px;
+  margin: auto;
+  padding: 40px 20px 80px;
+}
+
+/* ── Header ── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  object-fit: contain;
+  display: block;
+}
+
+.brand {
+  font-size: 20px;
+  font-style: italic;
+  color: #94a3b8;
+}
+
+.brand span {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.back-btn {
+  font-size: 13px;
+  color: #64748b;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #193524;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.back-btn:hover {
+  color: #94a3b8;
+  border-color: #28523a;
+}
+
+/* ── Hero ── */
+
+.hero {
+  margin-bottom: 64px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: #22c55e;
+}
+
+.hero p {
+  font-size: 17px;
+  color: #94a3b8;
+  max-width: 570px;
+  margin-bottom: 32px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #16a34a;
+  color: white;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.cta:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+.cta svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Screenshots ── */
+
+.screenshots {
+  margin-bottom: 64px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screenshots-track {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.screenshot {
+  flex-shrink: 0;
+  width: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #193524;
+  background: #0b1b12;
+}
+
+.screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Features ── */
+
+.features {
+  margin-bottom: 64px;
+}
+
+.features h2,
+.audience h2,
+.privacy h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4f6f5b;
+  margin-bottom: 24px;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+.feature-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.feature-list li strong {
+  color: #e2e8f0;
+}
+
+/* ── Audience ── */
+
+.audience {
+  margin-bottom: 64px;
+}
+
+.audience p {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 12px;
+  max-width: 650px;
+}
+
+.audience strong {
+  color: #e2e8f0;
+}
+
+/* ── Privacy ── */
+
+.privacy {
+  border: 1px solid #193524;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 64px;
+  background: rgba(20, 83, 45, 0.08);
+}
+
+.privacy h2 {
+  color: #4ade80;
+  margin-bottom: 10px;
+}
+
+.privacy p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 18px;
+}
+
+.privacy-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.privacy-list li {
+  font-size: 14px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.privacy-list li::before {
+  content: '✓';
+  color: #4ade80;
+  font-weight: 700;
+}
+
+/* ── Disclaimer ── */
+
+.disclaimer {
+  margin-bottom: 64px;
+}
+
+.disclaimer p {
+  font-size: 13px;
+  color: #4f6470;
+  max-width: 680px;
+}
+
+/* ── Footer ── */
+
+footer {
+  border-top: 1px solid #193524;
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer p {
+  font-size: 13px;
+  color: #4f6470;
+}
+
+footer a {
+  font-size: 13px;
+  color: #4f6470;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #94a3b8;
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 600px) {
+  .container {
+    padding-top: 28px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .hero {
+    margin-bottom: 52px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .screenshot {
+    width: 180px;
+  }
+
+  footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <img
+        src="/argentix/img/logo.png"
+        alt="Logo Argentix"
+        class="logo"
+        width="42"
+        height="42"
+      >
+      <div class="brand">argent<span>ix</span></div>
+    </div>
+
+    <a href="https://aromathiz.com" class="back-btn">← Aromathiz</a>
+  </header>
+
+
+  <!-- Hero -->
+  <section class="hero">
+
+    <h1>
+      Visualise ton épargne.<br>
+      <em>Projette ton avenir.</em>
+    </h1>
+
+    <p>
+      Argentix t'aide à suivre ton épargne, à visualiser son évolution
+      et à explorer différents scénarios pour ton avenir financier.
+    </p>
+
+    <a
+      class="cta"
+      href="https://play.google.com/store/apps/details?id=com.aromathiz.argentix"
+      target="_blank"
+      rel="noopener"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3.18 23.76a2 2 0 0 0 2.07-.18l12.71-7.35-2.93-2.93-11.85 10.46zM20.54 9.37 17.1 7.41 13.84 10.67l3.26 3.26 3.46-2a1.85 1.85 0 0 0-.02-2.56zM1.5.59A1.84 1.84 0 0 0 1 1.84v20.32a1.84 1.84 0 0 0 .5 1.25L1.6 23.5l11.38-11.38v-.24L1.6.5z"/>
+      </svg>
+      Télécharger sur Google Play
+    </a>
+
+  </section>
+
+
+  <!-- Screenshots -->
+  <section class="screenshots" aria-label="Captures d'écran Argentix">
+
+    <div class="screenshots-track">
+
+      <div class="screenshot">
+        <img
+          src="/argentix/img/argentix-screen1.png"
+          alt="Argentix - Visualise ton épargne"
+          width="200"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="screenshot">
+        <img
+          src="/argentix/img/argentix-screen2.png"
+          alt="Argentix - Projette-toi dans ton avenir financier"
+          width="200"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="screenshot">
+        <img
+          src="/argentix/img/argentix-screen3.png"
+          alt="Argentix - Garde une vision globale de ton épargne"
+          width="200"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="screenshot">
+        <img
+          src="/argentix/img/argentix-screen4.png"
+          alt="Argentix - Analyse l'évolution de tes placements"
+          width="200"
+          loading="lazy"
+        >
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Features -->
+  <section class="features">
+
+    <h2>Ce que vous pouvez faire</h2>
+
+    <ul class="feature-list">
+
+      <li>
+        <div>
+          <strong>Suivre votre épargne.</strong>
+          Visualisez simplement votre épargne totale et sa répartition entre vos différentes poches.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Organiser votre argent.</strong>
+          Regroupez votre épargne dans différentes poches : Livret A, LDDS, PEA, PER ou autres placements.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Garder un historique.</strong>
+          Enregistrez des instantanés de votre situation financière et observez votre évolution dans le temps.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Projeter votre avenir.</strong>
+          Explorez l'évolution possible de votre épargne sur plusieurs années en faisant varier vos hypothèses.
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <strong>Visualiser vos objectifs.</strong>
+          Observez progressivement le chemin parcouru vers vos objectifs d'épargne.
+        </div>
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- Audience -->
+  <section class="audience">
+
+    <h2>À qui s'adresse Argentix</h2>
+
+    <p>
+      À celles et ceux qui souhaitent <strong>mieux comprendre leur épargne</strong>
+      et suivre son évolution sans avoir besoin d'un outil financier complexe.
+    </p>
+
+    <p>
+      À ceux qui veulent <strong>visualiser leur patrimoine</strong>,
+      conserver une trace de leurs progrès et se projeter dans les années à venir.
+    </p>
+
+    <p>
+      À toute personne qui souhaite simplement
+      <strong>mettre son épargne en perspective</strong>.
+    </p>
+
+  </section>
+
+
+  <!-- Privacy -->
+  <section class="privacy">
+
+    <h2>Simple et respectueux de votre vie privée</h2>
+
+    <p>
+      Argentix est conçu pour suivre votre épargne sans vous demander de connecter
+      vos comptes bancaires ou de créer un compte.
+    </p>
+
+    <ul class="privacy-list">
+      <li>Aucune publicité</li>
+      <li>Aucune collecte de données personnelles</li>
+      <li>Aucun partage de données</li>
+      <li>Aucun compte requis</li>
+      <li>Données stockées sur votre appareil</li>
+    </ul>
+
+  </section>
+
+
+  <!-- Disclaimer -->
+  <section class="disclaimer">
+
+    <p>
+      Argentix est un outil de suivi, de visualisation et de simulation à usage personnel.
+      Les projections sont indicatives et ne constituent pas des conseils financiers.
+    </p>
+
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+
+    <p>© 2026 Aromathiz</p>
+
+    <div style="display:flex;gap:20px">
+      <a href="mailto:contact@aromathiz.com">Contact</a>
+      <a href="/argentix/privacy">Politique de confidentialité</a>
+    </div>
+
+  </footer>
+
+</div>
+
+</body>
+</html>
