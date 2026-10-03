@@ -36,10 +36,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "aroMathiz",
-    "url": "https://aromathiz.com",
-    "logo": "https://aromathiz.com/assets/aromathiz.png",
-    "email": "contact@aromathiz.com",
+    "name": "",
+    "url": "https://.com",
+    "logo": "https://.com/assets/.png",
+    "email": "contact@.com",
     "description": "Minimalist educational and creative math apps for Android.",
     "makesOffer": [
       {
@@ -49,7 +49,7 @@
           "name": "calcThis",
           "operatingSystem": "Android",
           "applicationCategory": "GameApplication",
-          "url": "https://aromathiz.com/calcthis"
+          "url": "https://.com/calcthis"
         }
       },
       {
@@ -59,7 +59,7 @@
           "name": "formulaThis",
           "operatingSystem": "Android",
           "applicationCategory": "EducationApplication",
-          "url": "https://aromathiz.com/formulathis"
+          "url": "https://.com/formulathis"
         }
       },
       {
@@ -69,7 +69,7 @@
           "name": "curveThis",
           "operatingSystem": "Android",
           "applicationCategory": "GameApplication",
-          "url": "https://aromathiz.com/curvethis"
+          "url": "https://.com/curvethis"
         }
       }
     ]
@@ -224,13 +224,13 @@
 
     <img
       class="studio-logo"
-      src="/assets/aromathiz.png"
-      alt="aroMathiz"
+      src="/assets/.png"
+      alt=""
       width="110"
       height="110"
     >
 
-    <h1>aroMathiz</h1>
+    <h1></h1>
 
     <p class="subtitle" data-lang="fr">Applications éducatives et créatives autour des mathématiques</p>
     <p class="subtitle" data-lang="en">Minimalist educational and creative math apps for Android</p>
@@ -295,7 +295,7 @@
           height="84"
           loading="lazy"
         >
-        <div class="app-title">argentix</div>
+        <div class="app-title">Argentix</div>
         <p class="desc" data-lang="fr">Visualise ton épargne. Projette ton avenir.</p>
         <p class="desc" data-lang="en">Visualize your savings. Project your future.</p>
       </a>
@@ -304,8 +304,8 @@
   </main>
 
   <footer>
-    <p>© 2026 aroMathiz &nbsp;·&nbsp;
-      <a href="mailto:contact@aromathiz.com">Contact</a>
+    <p>© 2026  &nbsp;·&nbsp;
+      <a href="mailto:contact@.com">Contact</a>
     </p>
   </footer>
 
@@ -316,13 +316,13 @@
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.documentElement.lang = lang === 'fr' ? 'fr' : 'en';
       document.title = lang === 'fr'
-        ? 'aroMathiz — Applications de maths pour Android'
-        : 'aroMathiz — Minimalist Math Apps for Android';
-      localStorage.setItem('aromathiz_lang', lang);
+        ? ' — Applications de maths pour Android'
+        : ' — Minimalist Math Apps for Android';
+      localStorage.setItem('_lang', lang);
     }
 
     (function () {
-      const saved = localStorage.getItem('aromathiz_lang');
+      const saved = localStorage.getItem('_lang');
       const browser = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
       const lang = saved || (browser.startsWith('fr') ? 'fr' : 'en');
       setLang(lang);
