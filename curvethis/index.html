@@ -68,17 +68,12 @@ body {
 }
 
 .logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #e07214, #c45e0e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    object-fit: contain;
+    display: block;
 }
-
-.logo svg { width: 26px; height: 26px; }
 
 .brand {
   font-size: 20px;
@@ -344,13 +339,10 @@ body.lang-en [data-lang="fr"]                  { display: none;  }
   <!-- Header -->
   <header class="header">
     <div class="header-left">
-      <div class="logo">
-        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M3 22 Q13 3 23 22" stroke="white" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-      </div>
+      <img src="/curvethis/img/logo.png" alt="Logo curveThis" class="logo" width="42" height="42">
       <div class="brand">curve<span>This</span></div>
     </div>
+    
     <div style="display:flex;align-items:center;gap:12px">
   <a href="https://aromathiz.com" class="back-btn">← aroMathiz</a>
   <nav class="lang-switcher" aria-label="Langue">
