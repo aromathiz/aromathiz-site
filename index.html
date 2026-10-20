@@ -14,7 +14,7 @@
   <meta name="keywords" content="math app, Android, mental math, formula editor, math game, educational app, calcThis, formulaThis, curveThis">
   <meta name="author" content="aroMathiz">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0b1020">
+  <meta name="theme-color" content="#ffffff">
 
   <!-- ── Open Graph ──────────────────────────────────────── -->
   <meta property="og:type" content="website">
@@ -82,8 +82,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #0b1020;
-      color: white;
+      background: #ffffff;
+      color: #111827;
       font-family: Arial, sans-serif;
       min-height: 100vh;
       display: flex;
@@ -103,7 +103,7 @@
       border-radius: 28px;
       object-fit: cover;
       margin-bottom: 26px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
     }
 
     h1 {
@@ -113,7 +113,7 @@
     }
 
     .subtitle {
-      color: #94a3b8;
+      color: #6b7280;
       font-size: 1rem;
     }
 
@@ -136,8 +136,8 @@
       transition: all 0.15s;
     }
 
-    .lang-btn:hover { color: #94a3b8; }
-    .lang-btn.active { color: #e2e8f0; border-color: #334155; }
+    .lang-btn:hover { color: #6b7280; }
+    .lang-btn.active { color: #1d4ed8; border-color: #bfdbfe; background: #eff6ff; }
 
     /* ── Apps grid ── */
     .apps {
@@ -151,20 +151,20 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
       border-radius: 26px;
       padding: 28px;
       text-decoration: none;
-      color: white;
+      color: #111827;
       transition: 0.25s ease;
-      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
     }
 
     .card:hover {
       transform: translateY(-6px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.18);
+      background: #f8fafc;
+      border-color: #bfdbfe;
     }
 
     .app-icon {
@@ -173,17 +173,18 @@
       border-radius: 22px;
       object-fit: cover;
       margin-bottom: 22px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.10);
     }
 
     .app-title {
+      color: #1d4ed8;
       font-size: 1.35rem;
       font-weight: 700;
       margin-bottom: 10px;
     }
 
     .desc {
-      color: #cbd5e1;
+      color: #4b5563;
       line-height: 1.55;
       font-size: 0.95rem;
     }
@@ -192,17 +193,17 @@
     footer {
       text-align: center;
       padding: 30px;
-      color: #64748b;
+      color: #6b7280;
       font-size: 0.9rem;
     }
 
     footer a {
-      color: #64748b;
+      color: #6b7280;
       text-decoration: none;
       margin: 0 8px;
     }
 
-    footer a:hover { color: #94a3b8; }
+    footer a:hover { color: #6b7280; }
 
     /* ── Langue : EN caché par défaut ── */
     [data-lang="en"] { display: none; }
